@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         let productListVC = ProductListViewController()
-        window?.rootViewController = productListVC
+        window?.rootViewController = CartListViewController()  // TMP!
         window?.makeKeyAndVisible()
     }
 

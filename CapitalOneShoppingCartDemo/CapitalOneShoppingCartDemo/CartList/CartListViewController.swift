@@ -6,3 +6,16 @@
 //
 
 import Foundation
+import UIKit
+
+
+class CartListViewController: UIViewController {
+    private let cartListView = CartListView()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.addSubview(cartListView)
+        cartListView.translatesAutoresizingMaskIntoConstraints = false
+        cartListView.constrainToFillSuperview()
+    }
+}
