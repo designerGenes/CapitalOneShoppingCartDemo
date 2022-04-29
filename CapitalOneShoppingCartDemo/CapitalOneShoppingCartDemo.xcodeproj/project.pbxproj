@@ -22,7 +22,6 @@
 		A877813728171AF600A9584E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A877813628171AF600A9584E /* AppDelegate.swift */; };
 		A877813928171AF600A9584E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A877813828171AF600A9584E /* SceneDelegate.swift */; };
 		A877813B28171AF600A9584E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A877813A28171AF600A9584E /* ViewController.swift */; };
-		A877813E28171AF600A9584E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A877813C28171AF600A9584E /* Main.storyboard */; };
 		A877814028171AF700A9584E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A877813F28171AF700A9584E /* Assets.xcassets */; };
 		A877814328171AF700A9584E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A877814128171AF700A9584E /* LaunchScreen.storyboard */; };
 		A877814E28171AF700A9584E /* CapitalOneShoppingCartDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A877814D28171AF700A9584E /* CapitalOneShoppingCartDemoTests.swift */; };
@@ -64,7 +63,6 @@
 		A877813628171AF600A9584E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A877813828171AF600A9584E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A877813A28171AF600A9584E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		A877813D28171AF600A9584E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A877813F28171AF700A9584E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A877814228171AF700A9584E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A877814428171AF700A9584E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -178,7 +176,6 @@
 				A877813628171AF600A9584E /* AppDelegate.swift */,
 				A877813828171AF600A9584E /* SceneDelegate.swift */,
 				A877813A28171AF600A9584E /* ViewController.swift */,
-				A877813C28171AF600A9584E /* Main.storyboard */,
 				A877813F28171AF700A9584E /* Assets.xcassets */,
 				A877814128171AF700A9584E /* LaunchScreen.storyboard */,
 				A877814428171AF700A9584E /* Info.plist */,
@@ -309,7 +306,6 @@
 			files = (
 				A877814328171AF700A9584E /* LaunchScreen.storyboard in Resources */,
 				A877814028171AF700A9584E /* Assets.xcassets in Resources */,
-				A877813E28171AF600A9584E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,14 +381,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		A877813C28171AF600A9584E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A877813D28171AF600A9584E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A877814128171AF700A9584E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -530,7 +518,6 @@
 				INFOPLIST_FILE = CapitalOneShoppingCartDemo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -559,7 +546,6 @@
 				INFOPLIST_FILE = CapitalOneShoppingCartDemo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
