@@ -10,13 +10,15 @@ import UIKit
 
 
 class CartListView: UIView {
-    let cartTableView = UITableView()
-    let cartTotalContainerView = UIView()
+    var cartTableView: UITableView?
+    var cartTotalContainerView: UIView?
     
     private func setup() {
-        self.backgroundColor = .blue // TMP!
-        cartTableView.backgroundColor = .red // TMP!
-        cartTotalContainerView.backgroundColor = .yellow // TMP!
+        let _ = subviews.map({$0.removeFromSuperview()}) // just in case
+        let cartTableView = UITableView()
+        let cartTotalContainerView = UIView()
+        self.cartTableView = cartTableView
+        self.cartTotalContainerView = cartTotalContainerView
         addSubview(cartTableView)
         addSubview(cartTotalContainerView)
         cartTableView.translatesAutoresizingMaskIntoConstraints = false
@@ -33,9 +35,16 @@ class CartListView: UIView {
         ])
     }
     
-    override func didMoveToSuperview() {
-        super.didMoveToSuperview()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setup()
-        
+    }
+    
+    convenience init() {
+        self.init(frame: .zero)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
