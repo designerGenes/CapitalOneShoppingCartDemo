@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+class DataModel: NSObject {
+    var id: String?
+}
