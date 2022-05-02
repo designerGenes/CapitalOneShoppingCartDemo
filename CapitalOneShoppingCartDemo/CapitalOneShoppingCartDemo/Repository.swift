@@ -45,11 +45,3 @@ extension Repository {
         return allRecords
     }
 }
-
-class ProductsRepository: NSObject, Repository {
-    typealias T = Product
-}
-
-class CartsRepository: NSObject, Repository {
-    typealias T = Cart
-}
