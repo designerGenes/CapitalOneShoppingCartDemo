@@ -10,6 +10,7 @@ import UIKit
 
 
 class CartListView: UIView {
+
     var cartTableView: UITableView?
     var cartTotalContainerView: UIView?
     
@@ -17,6 +18,7 @@ class CartListView: UIView {
         let _ = subviews.map({$0.removeFromSuperview()}) // just in case
         let cartTableView = UITableView()
         let cartTotalContainerView = UIView()
+        
         self.cartTableView = cartTableView
         self.cartTotalContainerView = cartTotalContainerView
         addSubview(cartTableView)
@@ -33,11 +35,16 @@ class CartListView: UIView {
             cartTotalContainerView.bottomAnchor.constraint(equalTo: bottomAnchor),
             cartTotalContainerView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.25)
         ])
+        
+        self.cartTableView?.rowHeight = UITableView.automaticDimension
+        self.cartTableView?.estimatedRowHeight = UITableView.automaticDimension
+
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
+
     }
     
     convenience init() {
@@ -47,4 +54,7 @@ class CartListView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
 }
+
+
