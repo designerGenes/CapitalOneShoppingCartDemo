@@ -16,9 +16,35 @@ class ProductListViewController: UIViewController {
         super.viewDidLoad()
         self.view.addSubview(self.productListView.tableView)
         self.view.backgroundColor = UIColor.white
+        setupTableView()
+        setupNavigationWithAddToCartButton()
+    }
+    
+    private func setupTableView() {
         self.productListView.tableView.delegate = self
         self.productListView.tableView.dataSource = self
         self.productListView.tableView.constrainToFillSuperview()
+    }
+    
+    private func setupNavigationWithAddToCartButton() {
+        let cartScreenNavigation = UIBarButtonItem(image: UIImage(systemName: "plus"),
+                                                  style: .plain,
+                                                  target: self,
+                                                  action: #selector(navigateToCartScreen))
+        
+        cartScreenNavigation.title = "ADD TO CART"
+        self.navigationItem.rightBarButtonItem  = cartScreenNavigation
+    }
+    
+    @objc private func navigateToCartScreen() {
+        print("Show Next Cart List Screen")
+        //TODO: Uncomment when we merge Ritu and Jaden work for CartList
+        
+//        let cartListViewController = CartListViewController()
+//        self.navigationController?.present(cartListViewController, animated: true) {
+//            //TODO: Add Code if needed
+//        }
+        
     }
 }
 

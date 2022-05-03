@@ -90,9 +90,9 @@ class ProductTableViewCell:UITableViewCell {
                           paddingLeft: 5.0,
                           paddingBottom: 5.0,
                           paddingRight: 0.0,
-                          width: 100.0,
-                          height: 20.0,
-                          enableInsets: true)
+                          width: frame.size.width / 2,
+                          height: 0,
+                          enableInsets: false)
         
         descriptionLabel.anchor(top: titleLabel.bottomAnchor,
                                 left: leftAnchor,
@@ -101,10 +101,10 @@ class ProductTableViewCell:UITableViewCell {
                                 paddingTop: 0.0,
                                 paddingLeft: 5.0,
                                 paddingBottom: 5.0,
-                                paddingRight: 5.0,
-                                width: 300.0,
+                                paddingRight: 20.0,
+                                width:  frame.size.width/2,
                                 height: 0.0,
-                                enableInsets: true)
+                                enableInsets: false)
         
         starRatingsView.anchor(top: descriptionLabel.bottomAnchor,
                                 left: leftAnchor,
@@ -123,7 +123,7 @@ class ProductTableViewCell:UITableViewCell {
                             bottom: priceLabel.topAnchor ,
                             right: rightAnchor,
                             paddingTop: 0.0,
-                            paddingLeft: 5.0,
+                            paddingLeft: 20.0,
                             paddingBottom: 5.0,
                             paddingRight: 5.0,
                             width: 300.0,
