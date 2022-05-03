@@ -7,10 +7,36 @@
 
 import Foundation
 import UIKit
+import Combine
 
 class ProductListViewController: UIViewController {
     
     private var productListView =  ProductListView()
+    
+    //Todo: remove later- Prasanth
+    private var productWebService = ProductsWebService()
+    private var cancellable: AnyCancellable?
+    
+    var productListPresenter:ProductListPresenterProtocol?
+    
+    
+    
+    private var products = [Product](){
+        didSet{
+            productListView.tableView.reloadData()
+        }
+    }
+    
+    @available(*,unavailable,renamed: "init()")
+    required init?(coder:NSCoder){
+        super.init(coder: coder)!
+    }
+    
+    init(with presenter: ProductListPresenterProtocol) {
+            self.productListPresenter = presenter
+            super.init(nibName: nil, bundle: nil)
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,19 +45,27 @@ class ProductListViewController: UIViewController {
         self.productListView.tableView.delegate = self
         self.productListView.tableView.dataSource = self
         self.productListView.tableView.constrainToFillSuperview()
+        
+        guard let presentherProtocol = self.productListPresenter else {
+            print ("Not initialised")
+            return
+        }
+        presentherProtocol.initiateProductList()
+        
     }
 }
 
 extension ProductListViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5 // TODO:
+        return self.products.count // TODO:
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = self.productListView.tableView.dequeueReusableCell(withIdentifier: ProductTableViewCell.reuseIdentifier, for: indexPath as IndexPath) as? ProductTableViewCell else {
             return UITableViewCell()
         }
-        cell.titleLabel.text = "Test"
+        let product = self.products[indexPath.row]
+        cell.titleLabel.text = product.title
         return cell
     }
     

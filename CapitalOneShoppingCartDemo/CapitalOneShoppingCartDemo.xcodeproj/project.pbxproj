@@ -21,6 +21,9 @@
 		0F9A6CAA281C55EF008EDF32 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A6CA9281C55EF008EDF32 /* DataModel.swift */; };
 		0F9A6CAD281C5BD7008EDF32 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A6CAC281C5BD7008EDF32 /* ProductTableViewCell.swift */; };
 		0F9A6CB0281C5FDE008EDF32 /* UiView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A6CAF281C5FDE008EDF32 /* UiView+Extension.swift */; };
+		8F69569E2821B7F300436F67 /* EndpointProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F69569D2821B7F300436F67 /* EndpointProvider.swift */; };
+		8FA27F0C281EF88000DC32E2 /* ProductsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA27F0B281EF88000DC32E2 /* ProductsList.swift */; };
+		8FA27F102820989800DC32E2 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA27F0F2820989700DC32E2 /* NetworkClient.swift */; };
 		A877813728171AF600A9584E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A877813628171AF600A9584E /* AppDelegate.swift */; };
 		A877813928171AF600A9584E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A877813828171AF600A9584E /* SceneDelegate.swift */; };
 		A877813B28171AF600A9584E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A877813A28171AF600A9584E /* ViewController.swift */; };
@@ -63,6 +66,9 @@
 		0F9A6CA9281C55EF008EDF32 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		0F9A6CAC281C5BD7008EDF32 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		0F9A6CAF281C5FDE008EDF32 /* UiView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UiView+Extension.swift"; sourceTree = "<group>"; };
+		8F69569D2821B7F300436F67 /* EndpointProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointProvider.swift; sourceTree = "<group>"; };
+		8FA27F0B281EF88000DC32E2 /* ProductsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsList.swift; sourceTree = "<group>"; };
+		8FA27F0F2820989700DC32E2 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		A877813328171AF600A9584E /* CapitalOneShoppingCartDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CapitalOneShoppingCartDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A877813628171AF600A9584E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A877813828171AF600A9584E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -129,6 +135,7 @@
 		0F9A6CA2281C43F8008EDF32 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				8FA27F0B281EF88000DC32E2 /* ProductsList.swift */,
 				0F9A6CA3281C4406008EDF32 /* Product.swift */,
 			);
 			path = Entities;
@@ -146,6 +153,8 @@
 			isa = PBXGroup;
 			children = (
 				0F9A6CA7281C5594008EDF32 /* ProductsWebService.swift */,
+				8FA27F0F2820989700DC32E2 /* NetworkClient.swift */,
+				8F69569D2821B7F300436F67 /* EndpointProvider.swift */,
 			);
 			path = WebService;
 			sourceTree = "<group>";
@@ -354,13 +363,16 @@
 				0F9A6C9D281C43D5008EDF32 /* CartListViewController.swift in Sources */,
 				0F9A6C92281C4374008EDF32 /* ProductListViewController.swift in Sources */,
 				0F9A6CAD281C5BD7008EDF32 /* ProductTableViewCell.swift in Sources */,
+				8FA27F102820989800DC32E2 /* NetworkClient.swift in Sources */,
 				A877813728171AF600A9584E /* AppDelegate.swift in Sources */,
 				0F9A6C94281C438B008EDF32 /* ProductListPresenter.swift in Sources */,
 				A877813928171AF600A9584E /* SceneDelegate.swift in Sources */,
+				8F69569E2821B7F300436F67 /* EndpointProvider.swift in Sources */,
 				0F9A6CB0281C5FDE008EDF32 /* UiView+Extension.swift in Sources */,
 				0F9A6C9B281C43CA008EDF32 /* CartListView.swift in Sources */,
 				0F9A6CA8281C5595008EDF32 /* ProductsWebService.swift in Sources */,
 				0F9A6CA4281C4406008EDF32 /* Product.swift in Sources */,
+				8FA27F0C281EF88000DC32E2 /* ProductsList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
