@@ -31,7 +31,10 @@ extension ProductListViewController : UITableViewDataSource {
         guard let cell = self.productListView.tableView.dequeueReusableCell(withIdentifier: ProductTableViewCell.reuseIdentifier, for: indexPath as IndexPath) as? ProductTableViewCell else {
             return UITableViewCell()
         }
-        cell.titleLabel.text = "Test"
+        cell.titleLabel.text = "iPhone 9 with Pro"
+        cell.descriptionLabel.text = "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with"
+        cell.priceLabel.text = "15$"
+        cell.starRatingsView.rating =  3 // TODO
         return cell
     }
     
