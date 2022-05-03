@@ -18,6 +18,7 @@ class CartListView: UIView {
         let _ = subviews.map({$0.removeFromSuperview()}) // just in case
         let cartTableView = UITableView()
         let cartTotalContainerView = UIView()
+        
         self.cartTableView = cartTableView
         self.cartTotalContainerView = cartTotalContainerView
         addSubview(cartTableView)
@@ -35,11 +36,8 @@ class CartListView: UIView {
             cartTotalContainerView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.25)
         ])
         
-        cartTableView.delegate = self
-        cartTableView.dataSource = self
-        cartTableView.register(CartListTableViewCell.self, forCellReuseIdentifier: "CartListTableViewCell")
-        cartTableView.rowHeight = UITableView.automaticDimension
-        cartTableView.estimatedRowHeight = UITableView.automaticDimension
+        self.cartTableView?.rowHeight = UITableView.automaticDimension
+        self.cartTableView?.estimatedRowHeight = UITableView.automaticDimension
 
     }
     
@@ -59,24 +57,4 @@ class CartListView: UIView {
     
 }
 
-extension CartListView : UITableViewDelegate, UITableViewDataSource{
-  
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10 //TMP
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "CartListTableViewCell", for: indexPath) as? CartListTableViewCell {
-            return cell
-        }
-
-        //cell.setupCell(withProduct: product)
-
-        return UITableViewCell()
-    }
-
-}
