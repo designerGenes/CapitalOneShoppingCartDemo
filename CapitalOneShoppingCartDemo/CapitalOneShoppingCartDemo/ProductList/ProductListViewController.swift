@@ -17,7 +17,7 @@ class ProductListViewController: UIViewController {
     private var productWebService = ProductsWebService()
     private var cancellable: AnyCancellable?
     
-    var productListPresenterProtocol:ProductListPresenterProtocol?
+    var productListPresenter:ProductListPresenterProtocol?
     
     
     
@@ -26,7 +26,26 @@ class ProductListViewController: UIViewController {
             productListView.tableView.reloadData()
         }
     }
+    
+    @available(*,unavailable,renamed: "init()")
+    required init?(coder:NSCoder){
+        super.init(coder: coder)!
+    }
+    
+    init(with presenter: ProductListPresenterProtocol) {
+            self.productListPresenter = presenter
+            super.init(nibName: nil, bundle: nil)
+    }
 
+    
+//     func instance(presenter:ProductListPresenterProtocol) -> ProductListViewController {
+//
+//    }
+
+//    @available(*,unavailable,renamed: "init()")
+//    required init?(coder: NSCoder) {
+//        fatalError("Invalid")
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +64,7 @@ class ProductListViewController: UIViewController {
         
         
         
-        guard let presentherProtocol = self.productListPresenterProtocol else {
+        guard let presentherProtocol = self.productListPresenter else {
             print ("Not initialised")
             return
         }

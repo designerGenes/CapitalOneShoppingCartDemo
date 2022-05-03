@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Holds response of response json with list of products
 struct ProductsList: Codable {
     let products: [Product]
 }

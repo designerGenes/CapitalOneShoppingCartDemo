@@ -13,6 +13,9 @@ protocol NetworkClientProtocol {
 }
 
 class NetworkClient: NetworkClientProtocol{
+    
+    /// Returns the data of type requested by webservice layer if successful
+    /// Else returns error message
     func getResponseData<T: Decodable>(fromUrl: URL, type:T.Type) -> AnyPublisher<T?,Error>{
         return URLSession.shared.dataTaskPublisher(for: fromUrl)
             .map{$0.data}

@@ -21,28 +21,13 @@ class ProductsWebService:ProductWebserviceProtocol{
     }
     
     
+    /// Downloads and returns the array of products from endpoint or returns error message
     func getListOfProducts() -> AnyPublisher<[Product]?, Error> {
-        //Todo:Endpoint
-        guard let url = URL(string: "https://dummyjson.com/products") else {
-            fatalError("Invalid Url")
-        }
-        return networkClient.getResponseData(fromUrl: url, type: ProductsList.self)
+
+        return networkClient.getResponseData(fromUrl: EndpointProvider.productListendPoint(), type: ProductsList.self)
             .map{$0?.products }
             .receive(on: RunLoop.main, options: nil)
             .eraseToAnyPublisher()
     }
-    
- 
-    func getProductList() -> AnyPublisher<[Product], Error> {
-        guard let url = URL(string: "https://dummyjson.com/products") else {
-            fatalError("Invalid Url")
-        }
-        
-        return URLSession.shared.dataTaskPublisher(for: url).map { $0.data}.print()
-            .decode(type: ProductsList.self, decoder: JSONDecoder())
-            .map{$0.products}
-            .receive(on: RunLoop.main, options: nil)
-            .eraseToAnyPublisher()
-        
-    }
+
 }
