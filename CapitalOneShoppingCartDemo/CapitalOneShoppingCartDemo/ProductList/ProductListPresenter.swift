@@ -12,16 +12,18 @@ import UIKit
 
 protocol ProductListPresenterProtocol: AnyObject{
     func initiateProductList()
+    func getAllProducts() -> [Product]
+    func productsCount() -> Int
+    func getCurrentProduct(at index:Int) -> Product
 }
 
 // Implements the data conversion to presentable format to view
 class ProductListPresenter:ProductListPresenterProtocol{
-    
     private let productListInteractor:ProductListInteractorProtocol
     
     private var cancellables = Set<AnyCancellable>()
     
-    private var products = [Product]()
+    private var products : [Product] = []
     
     init(interactor:ProductListInteractorProtocol){
         self.productListInteractor = interactor
@@ -34,12 +36,25 @@ class ProductListPresenter:ProductListPresenterProtocol{
                 print(Error)
             } receiveValue: { [weak self] in
                 print("Product List")
-                print($0!)
-                self?.products = $0 ?? []
+
+                self?.updateProductList(products: $0 ?? [])
             }
             .store(in: &cancellables)
     }
     
+    func productsCount() -> Int {
+        return self.products.count
+    }
     
+    func getAllProducts() -> [Product] {
+        return self.products
+    }
     
+    private func updateProductList(products: [Product]) {
+        self.products = products
+    }
+    
+    func getCurrentProduct(at index:Int) -> Product {
+        return self.products[index]
+    }
 }
