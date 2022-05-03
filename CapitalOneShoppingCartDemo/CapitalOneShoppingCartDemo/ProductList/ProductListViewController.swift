@@ -7,10 +7,35 @@
 
 import Foundation
 import UIKit
+import Combine
 
 class ProductListViewController: UIViewController {
     
     private var productListView =  ProductListView()
+    
+    //Todo: remove later- Prasanth
+    private var productWebService = ProductsWebService()
+    private var cancellable: AnyCancellable?
+    
+    var productListPresenter:ProductListPresenterProtocol?
+    
+    
+    private var products = [Product](){
+        didSet{
+            productListView.tableView.reloadData()
+        }
+    }
+    
+    @available(*,unavailable,renamed: "init()")
+    required init?(coder:NSCoder){
+        super.init(coder: coder)!
+    }
+    
+    init(with presenter: ProductListPresenterProtocol) {
+            self.productListPresenter = presenter
+            super.init(nibName: nil, bundle: nil)
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +43,13 @@ class ProductListViewController: UIViewController {
         self.view.backgroundColor = UIColor.white
         setupTableView()
         setupNavigationWithAddToCartButton()
+        
+        guard let presenterProtocol = self.productListPresenter else {
+            print ("Not initialised")
+            return
+        }
+        presenterProtocol.initiateProductList()
+        self.products = presenterProtocol.getAllProducts()
     }
     
     private func setupTableView() {
@@ -50,17 +82,20 @@ class ProductListViewController: UIViewController {
 
 extension ProductListViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5 // TODO:
+        return self.productListPresenter?.productsCount() ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = self.productListView.tableView.dequeueReusableCell(withIdentifier: ProductTableViewCell.reuseIdentifier, for: indexPath as IndexPath) as? ProductTableViewCell else {
             return UITableViewCell()
         }
-        cell.titleLabel.text = "iPhone 9 with Pro"
-        cell.descriptionLabel.text = "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with"
-        cell.priceLabel.text = "15$"
-        cell.starRatingsView.rating =  3 // TODO
+        guard let product = productListPresenter?.getCurrentProduct(at: indexPath.row)  else {
+            return UITableViewCell()
+        }
+        
+        cell.titleLabel.text = product.title
+        cell.descriptionLabel.text = product.description
+        cell.priceLabel.text = String(product.price)
         return cell
     }
     
