@@ -7,10 +7,26 @@
 
 import Foundation
 import UIKit
+import Combine
 
 class ProductListViewController: UIViewController {
     
     private var productListView =  ProductListView()
+    
+    //Todo: remove later- Prasanth
+    private var productWebService = ProductsWebService()
+    private var cancellable: AnyCancellable?
+    
+    var productListPresenterProtocol:ProductListPresenterProtocol?
+    
+    
+    
+    private var products = [Product](){
+        didSet{
+            productListView.tableView.reloadData()
+        }
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,19 +35,36 @@ class ProductListViewController: UIViewController {
         self.productListView.tableView.delegate = self
         self.productListView.tableView.dataSource = self
         self.productListView.tableView.constrainToFillSuperview()
+        
+        //******
+        //Uncomment this section of code to view items in table
+        //Todo: update later- Prasanth
+//        self.cancellable = self.productWebService.getProductList()
+//            .catch{ _ in Just(self.products)}
+//            .assign(to:\.products , on: self)
+        
+        
+        
+        guard let presentherProtocol = self.productListPresenterProtocol else {
+            print ("Not initialised")
+            return
+        }
+        presentherProtocol.initiateProductList()
+        
     }
 }
 
 extension ProductListViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5 // TODO:
+        return self.products.count // TODO:
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = self.productListView.tableView.dequeueReusableCell(withIdentifier: ProductTableViewCell.reuseIdentifier, for: indexPath as IndexPath) as? ProductTableViewCell else {
             return UITableViewCell()
         }
-        cell.titleLabel.text = "Test"
+        let product = self.products[indexPath.row]
+        cell.titleLabel.text = product.title
         return cell
     }
     

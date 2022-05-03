@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct Product: Codable{
+    let title: String
+    let price: Int
+}
