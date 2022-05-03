@@ -38,15 +38,6 @@ class ProductListViewController: UIViewController {
     }
 
     
-//     func instance(presenter:ProductListPresenterProtocol) -> ProductListViewController {
-//
-//    }
-
-//    @available(*,unavailable,renamed: "init()")
-//    required init?(coder: NSCoder) {
-//        fatalError("Invalid")
-//    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(self.productListView.tableView)
@@ -54,15 +45,6 @@ class ProductListViewController: UIViewController {
         self.productListView.tableView.delegate = self
         self.productListView.tableView.dataSource = self
         self.productListView.tableView.constrainToFillSuperview()
-        
-        //******
-        //Uncomment this section of code to view items in table
-        //Todo: update later- Prasanth
-//        self.cancellable = self.productWebService.getProductList()
-//            .catch{ _ in Just(self.products)}
-//            .assign(to:\.products , on: self)
-        
-        
         
         guard let presentherProtocol = self.productListPresenter else {
             print ("Not initialised")

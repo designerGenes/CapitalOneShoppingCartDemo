@@ -26,17 +26,3 @@ class NetworkClient: NetworkClientProtocol{
     }
 }
 
-
-//protocol NetworkClientProtocol {
-//    //Todo Endpoint url to pass
-//    func getData<D: Decodable>(url: URL)-> AnyPublisher<D?, URLError>
-//}
-//
-//class NetworkClient: NetworkClientProtocol{
-//    func getData<D>(url: URL) -> AnyPublisher<D?, URLError> where D : Decodable {
-//        return URLSession.shared.dataTaskPublisher(for: url)
-//            .map { $0.data as? D}
-//            .receive(on: RunLoop.main, options: nil)
-//            .eraseToAnyPublisher()
-//    }
-//}
