@@ -16,9 +16,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         let productListVC = ProductListViewController(with: ProductListPresenter(interactor: ProductListInteractor(webService: ProductsWebService())))
-        window?.rootViewController = productListVC
+        let navigationController = UINavigationController()
+        navigationController.viewControllers = [productListVC]
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
+//    
+//    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+//            guard let windowScene = (scene as? UIWindowScene) else { return }
+//            window = UIWindow(windowScene: windowScene)
+//            let productListVC = ProductListViewController(with: ProductListPresenter(interactor: ProductListInteractor(webService: ProductsWebService())))
+//            window?.rootViewController = productListVC
+//            window?.makeKeyAndVisible()
+//        }
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
