@@ -10,18 +10,6 @@ import Combine
 @testable import CapitalOneShoppingCartDemo
 
 
-class NetworkClientMock:NetworkClientProtocol{
-    
-    var dataResult: Decodable?
-    
-    func getResponseData<T: Decodable>(fromUrl: URL, type:T.Type) -> AnyPublisher<T?,Never> {
-
-        return Just(dataResult as? T)
-            .eraseToAnyPublisher()
-    }
-    
-}
-
 class ProductsWebServiceTests: XCTestCase {
     
     private var netWorkClientMock:NetworkClientMock!
@@ -57,7 +45,7 @@ class ProductsWebServiceTests: XCTestCase {
         let expectedResult = [product]
         
         var actualResult : [Product]?
-        cancellable =  productWebService.getListOfProducts()
+        cancellable =  productWebService.getListOfProducts(fromUrl: EndpointProvider.productListendPoint())
             .sink{ _ in} receiveValue: { products in
                 actualResult = products
                 self.expectation.fulfill()
@@ -68,26 +56,54 @@ class ProductsWebServiceTests: XCTestCase {
         
     }
     
-    func testGetListOfProducts_WhenProvideValidUrl_EmptyArray(){
+    func testGetListOfProducts_WhenProvideValidUrl_ReturnEmptyArray(){
+        let product = Product(id: 10, title: "iphone 9", price: 1000, description: "new iphone 9", discountPercentage: 10, rating: 9.5, stock: 10, brand: "Apple", category: "Smart Phone", thumbnail: "ImageUrl")
+        
+        netWorkClientMock.dataResult = ProductsList(products: [])
+        
+        let expectedResult = [product]
+        
+        var actualResult : [Product]?
+        cancellable =  productWebService.getListOfProducts(fromUrl: EndpointProvider.productListendPoint())
+            .sink{ _ in} receiveValue: { products in
+                actualResult = products
+                self.expectation.fulfill()
+            }
+        expectationWait()
+        
+        XCTAssertNotEqual(expectedResult,actualResult,"It should return empty array but its returning something ")
+    }
+    
+    func testGetListOfProducts_WhenProvideValidUrl_ReturnInvalidResponse(){
+        let product = Product(id: 10, title: "iphone 9", price: 1000, description: "new iphone 9", discountPercentage: 10, rating: 9.5, stock: 10, brand: "Apple", category: "Smart Phone", thumbnail: "ImageUrl")
+        
+        netWorkClientMock.dataResult = [product]
+        
+        let expectedResult = [product]
+        
+        var actualResult : [Product]?
+        cancellable =  productWebService.getListOfProducts(fromUrl: EndpointProvider.productListendPoint())
+            .sink{ _ in} receiveValue: { products in
+                actualResult = products
+                self.expectation.fulfill()
+            }
+        expectationWait()
+        
+        XCTAssertNotEqual(expectedResult,actualResult,"It should return invalid response but its returning something else ")
+    }
+    
+    func testGetListOfProducts_WhenProvideInValidUrl_ReturnError(){
+       // let product = Product(id: 10, title: "iphone 9", price: 1000, description: "new iphone 9", discountPercentage: 10, rating: 9.5, stock: 10, brand: "Apple", category: "Smart Phone", thumbnail: "ImageUrl")
+        
+      //  netWorkClientMock.dataResult = ProductsList(products: [product])
+        
+        let invalidURL = URL(string: "www.test.com")
+      //  expectationWait()
+        
+        XCTAssertNotEqual(invalidURL, EndpointProvider.productListendPoint(), "Invalid URL")
         
     }
     
-    //
     
-    
-    //    func testExample() throws {
-    //        // This is an example of a functional test case.
-    //        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    //        // Any test you write for XCTest can be annotated as throws and async.
-    //        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-    //        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    //    }
-    //
-    //    func testPerformanceExample() throws {
-    //        // This is an example of a performance test case.
-    //        self.measure {
-    //            // Put the code you want to measure the time of here.
-    //        }
-    //    }
-    
+ 
 }

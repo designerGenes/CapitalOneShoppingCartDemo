@@ -25,7 +25,7 @@ class ProductListInteractor:ProductListInteractorProtocol{
     /// Called by  presenter to retreive the list of products
     /// Returns the produts-array/Error to presenter
     func productList() -> AnyPublisher<[Product]?, Never> {
-        productWebService.getListOfProducts()
+        productWebService.getListOfProducts(fromUrl: EndpointProvider.productListendPoint())
             .receive(on: RunLoop.main, options: nil)
             .eraseToAnyPublisher()
     }

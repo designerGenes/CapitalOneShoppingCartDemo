@@ -8,25 +8,3 @@
 import Foundation
 import Combine
 @testable import CapitalOneShoppingCartDemo
-
-class MockProductListPresenter: ProductListPresenterProtocol {
-    var productsListPublisher: AnyPublisher<Void, Never>
-    
-    func initiateProductList() {
-        //
-    }
-    
-    func getAllProducts() -> [Product] {
-        //
-    }
-    
-    func productsCount() -> Int {
-        //
-    }
-    
-    func getCurrentProduct(at index: Int) -> Product {
-        //
-    }
-    
-    
-}
