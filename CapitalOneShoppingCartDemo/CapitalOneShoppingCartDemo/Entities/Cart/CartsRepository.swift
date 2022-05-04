@@ -26,7 +26,8 @@ class CartsRepository: NSObject, Repository {
     }
     
     func set(record: Cart) {
-        UserDefaults.standard.set([record], forKey: CartsRepository.storageKey)
+        let encodedRecord = try? PropertyListEncoder().encode(record)
+        UserDefaults.standard.set([encodedRecord], forKey: CartsRepository.storageKey)
     }
     
     

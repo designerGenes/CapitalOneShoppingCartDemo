@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Cart: NSObject {
+class Cart: NSObject, Codable {
     var productIds = [String]()
     
     func addProduct(id: String) {
