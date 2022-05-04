@@ -10,6 +10,7 @@ import UIKit
 
 class ProductListView: UIView {
     
+    
     public let tableView: UITableView = {
         let view = UITableView()
         view.translatesAutoresizingMaskIntoConstraints = false
