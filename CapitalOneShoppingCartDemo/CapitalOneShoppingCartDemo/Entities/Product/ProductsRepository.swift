@@ -11,7 +11,7 @@ class ProductsRepository: NSObject, Repository {
     typealias T = Product
     static var storageKey: String { String(describing: ProductsRepository.self) }
     
-    func get(id: String) -> Product? {
+    func get(id: Int) -> Product? {
         getAll().filter({$0.id == id}).first
     }
     

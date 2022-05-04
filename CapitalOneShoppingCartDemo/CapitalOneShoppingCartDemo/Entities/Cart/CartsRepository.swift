@@ -11,7 +11,7 @@ class CartsRepository: NSObject, Repository {
     typealias T = Cart
     static var storageKey: String { String(describing: CartsRepository.self) }
     
-    func get(id: String) -> Cart? {
+    func get(id: Int) -> Cart? {
         getCart()
     }
     
