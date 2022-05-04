@@ -82,10 +82,10 @@ class ProductListViewController: UIViewController {
         print("Show Next Cart List Screen")
         //TODO: Uncomment when we merge Ritu and Jaden work for CartList
         
-//        let cartListViewController = CartListViewController()
-//        self.navigationController?.present(cartListViewController, animated: true) {
-//            //TODO: Add Code if needed
-//        }
+        let cartListViewController = CartListViewController()
+        self.navigationController?.present(cartListViewController, animated: true) {
+            //TODO: Add Code if needed
+        }
         
     }
 }
