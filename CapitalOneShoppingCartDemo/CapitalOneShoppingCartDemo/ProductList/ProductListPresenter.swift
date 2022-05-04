@@ -30,13 +30,11 @@ class ProductListPresenter:ProductListPresenterProtocol{
     /// Initiates the call to retreive the product list service
     func initiateProductList() {
         productListInteractor.productList()
-            .sink { Error in
-                print(Error)
-            } receiveValue: { [weak self] in
+            .sink ( receiveValue: { [weak self] in
                 print("Product List")
                 print($0!)
                 self?.products = $0 ?? []
-            }
+            })
             .store(in: &cancellables)
     }
     

@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol ProductWebserviceProtocol{
-    func getListOfProducts()->AnyPublisher<[Product]?, Error>
+    func getListOfProducts()->AnyPublisher<[Product]?, Never>
 }
 
 class ProductsWebService:ProductWebserviceProtocol{
@@ -22,12 +22,16 @@ class ProductsWebService:ProductWebserviceProtocol{
     
     
     /// Downloads and returns the array of products from endpoint or returns error message
-    func getListOfProducts() -> AnyPublisher<[Product]?, Error> {
-
+    func getListOfProducts() -> AnyPublisher<[Product]?, Never> {
+        
         return networkClient.getResponseData(fromUrl: EndpointProvider.productListendPoint(), type: ProductsList.self)
-            .map{$0?.products }
+            .map{$0?.products}
+            .print()
             .receive(on: RunLoop.main, options: nil)
             .eraseToAnyPublisher()
+        
+        
+        
     }
 
 }
