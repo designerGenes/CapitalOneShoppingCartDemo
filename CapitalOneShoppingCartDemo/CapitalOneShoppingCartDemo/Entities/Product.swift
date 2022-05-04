@@ -15,9 +15,14 @@ struct Product: Codable{
     let description: String
     let discountPercentage: Double
     let rating: Double
-    let stock: Double
+    let stock: Int
     let brand: String
     let category: String
-    let thumbnail: String
+    let thumbnail: String?
+    
+    
+    static var emptyProduct: Product {
+        Product(id: 0, title: "", price: 5, description: "", discountPercentage: 40.0, rating: 3.4, stock: 45, brand: "", category: "", thumbnail: "")
+    }
     
 }

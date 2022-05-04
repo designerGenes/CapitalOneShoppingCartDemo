@@ -10,7 +10,8 @@ import Combine
 import UIKit
 
 
-protocol ProductListPresenterProtocol: AnyObject{
+protocol ProductListPresenterProtocol {
+    var productsListPublisher: AnyPublisher<Void, Never> { get }
     func initiateProductList()
     func getAllProducts() -> [Product]
     func productsCount() -> Int
@@ -18,15 +19,16 @@ protocol ProductListPresenterProtocol: AnyObject{
 }
 
 // Implements the data conversion to presentable format to view
-class ProductListPresenter:ProductListPresenterProtocol{
-    private let productListInteractor:ProductListInteractorProtocol
-    
+class ProductListPresenter: ProductListPresenterProtocol {
+    var productsListPublisher: AnyPublisher<Void, Never>
+    private var updateProductsListPublisher = PassthroughSubject<Void, Never>()
+    private let productListInteractor: ProductListInteractorProtocol
     private var cancellables = Set<AnyCancellable>()
-    
     private var products : [Product] = []
     
-    init(interactor:ProductListInteractorProtocol){
+    required init(interactor:ProductListInteractorProtocol){
         self.productListInteractor = interactor
+        productsListPublisher = updateProductsListPublisher.eraseToAnyPublisher()
     }
     
     /// Initiates the call to retreive the product list service
@@ -36,7 +38,6 @@ class ProductListPresenter:ProductListPresenterProtocol{
                 print(Error)
             } receiveValue: { [weak self] in
                 print("Product List")
-
                 self?.updateProductList(products: $0 ?? [])
             }
             .store(in: &cancellables)
@@ -52,6 +53,7 @@ class ProductListPresenter:ProductListPresenterProtocol{
     
     private func updateProductList(products: [Product]) {
         self.products = products
+        updateProductsListPublisher.send()
     }
     
     func getCurrentProduct(at index:Int) -> Product {

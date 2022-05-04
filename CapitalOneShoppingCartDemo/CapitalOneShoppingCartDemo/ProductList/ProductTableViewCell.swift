@@ -47,9 +47,28 @@ class ProductTableViewCell:UITableViewCell {
         priceLabel.translatesAutoresizingMaskIntoConstraints = false
         priceLabel.textAlignment = .left
         priceLabel.numberOfLines = 0
-        priceLabel.font = UIFont.boldSystemFont(ofSize: 16.0)
+        priceLabel.font = UIFont.boldSystemFont(ofSize: 18.0)
         priceLabel.textColor = UIColor.black
         return priceLabel
+    }()
+    
+    public let stockLabel: UILabel = {
+        let stockLabel = UILabel()
+        stockLabel.translatesAutoresizingMaskIntoConstraints = false
+        stockLabel.textAlignment = .left
+        stockLabel.numberOfLines = 0
+        stockLabel.font = UIFont.systemFont(ofSize: 12.0, weight: .medium)
+        stockLabel.textColor = UIColor.lightGray
+        return stockLabel
+    }()
+    
+    public let addToCartButton : UIButton = {
+        let addToCartButton = UIButton()
+        addToCartButton.backgroundColor = .blue
+        addToCartButton.layer.cornerRadius = 10
+        addToCartButton.titleLabel?.textColor = .white
+        addToCartButton.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        return addToCartButton
     }()
     
     public let starRatingsView: StarsView = {
@@ -60,8 +79,8 @@ class ProductTableViewCell:UITableViewCell {
     
     public let productImage: UIImageView = {
         let productImage = UIImageView()
-        productImage.image = UIImage(named: "thumbnail")
         productImage.contentMode = .scaleAspectFill
+        productImage.clipsToBounds = true
         return productImage
     }()
     
@@ -77,6 +96,8 @@ class ProductTableViewCell:UITableViewCell {
         addSubview(self.productImage)
         addSubview(self.priceLabel)
         addSubview(self.starRatingsView)
+        addSubview(self.stockLabel)
+        addSubview(self.addToCartButton)
         
         setupConstraints()
     }
@@ -108,7 +129,7 @@ class ProductTableViewCell:UITableViewCell {
         
         starRatingsView.anchor(top: descriptionLabel.bottomAnchor,
                                 left: leftAnchor,
-                                bottom: bottomAnchor ,
+                                bottom: nil ,
                                 right: nil,
                                 paddingTop: 0.0,
                                 paddingLeft: 5.0,
@@ -118,20 +139,20 @@ class ProductTableViewCell:UITableViewCell {
                                 height: 20.0,
                                 enableInsets: true)
         
-        productImage.anchor(top: topAnchor ,
-                            left: descriptionLabel.rightAnchor,
-                            bottom: priceLabel.topAnchor ,
-                            right: rightAnchor,
-                            paddingTop: 0.0,
-                            paddingLeft: 20.0,
-                            paddingBottom: 5.0,
-                            paddingRight: 5.0,
-                            width: 300.0,
-                            height: 0.0,
-                            enableInsets: true)
+        priceLabel.anchor(top: starRatingsView.bottomAnchor,
+                          left: leftAnchor,
+                          bottom: nil,
+                          right: rightAnchor,
+                          paddingTop: 0.0,
+                          paddingLeft: 5.0,
+                          paddingBottom: 5.0,
+                          paddingRight: 5.0,
+                          width: 100.0,
+                          height: 20.0,
+                          enableInsets: true)
         
-        priceLabel.anchor(top: productImage.bottomAnchor,
-                          left: productImage.leftAnchor,
+        stockLabel.anchor(top: priceLabel.bottomAnchor,
+                          left: leftAnchor,
                           bottom: bottomAnchor,
                           right: rightAnchor,
                           paddingTop: 0.0,
@@ -141,6 +162,31 @@ class ProductTableViewCell:UITableViewCell {
                           width: 100.0,
                           height: 20.0,
                           enableInsets: true)
+        
+        productImage.anchor(top: topAnchor ,
+                            left: descriptionLabel.rightAnchor,
+                            bottom: nil ,
+                            right: rightAnchor,
+                            paddingTop: 10.0,
+                            paddingLeft: 10.0,
+                            paddingBottom: 10.0,
+                            paddingRight: 10.0,
+                            width: 100.0,
+                            height: 0.0,
+                            enableInsets: false)
+        
+        addToCartButton.anchor(top: productImage.bottomAnchor ,
+                            left: productImage.leftAnchor,
+                            bottom: bottomAnchor ,
+                            right: rightAnchor,
+                            paddingTop: 10.0,
+                            paddingLeft: 10.0,
+                            paddingBottom: 10.0,
+                            paddingRight: 10.0,
+                            width: 100.0,
+                            height: 0.0,
+                            enableInsets: false)
+        
     }
     
     required init?(coder: NSCoder) {
