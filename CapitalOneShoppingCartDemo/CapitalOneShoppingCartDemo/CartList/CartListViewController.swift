@@ -7,17 +7,21 @@
 
 import Foundation
 import UIKit
-
+import Combine
 
 class CartListViewController: UIViewController {
     
     //MARK: - Outlets
     private let cartListView = CartListView()
     
+    //MARK: - Variables
+    var presenter: CartListPresenter = CartListPresenter()
+    
     //MARK: - ViewDid LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print(presenter.cart)
         self.view.addSubview(cartListView)
         cartListView.translatesAutoresizingMaskIntoConstraints = false
         cartListView.constrainToFillSuperview()
