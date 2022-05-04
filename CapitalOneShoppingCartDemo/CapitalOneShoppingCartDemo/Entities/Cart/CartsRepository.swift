@@ -15,8 +15,14 @@ class CartsRepository: NSObject, Repository {
         getCart()
     }
     
-    func getCart() -> Cart? {
-        getAll().first
+    func getCart() -> Cart {
+        guard let cart = getAll().first else {
+            let newCart = Cart()
+            set(record: newCart)
+            return newCart
+        }
+        return cart
+        
     }
     
     func set(record: Cart) {
