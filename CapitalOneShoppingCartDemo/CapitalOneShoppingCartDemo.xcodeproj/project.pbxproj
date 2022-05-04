@@ -28,6 +28,8 @@
 		0F9A6CC82823117A008EDF32 /* MockWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A6CC72823117A008EDF32 /* MockWebService.swift */; };
 		0F9A6CCA2823126C008EDF32 /* ProductListInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A6CC92823126C008EDF32 /* ProductListInteractorTests.swift */; };
 		0F9A6CCC28231376008EDF32 /* MockProductListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A6CCB28231376008EDF32 /* MockProductListInteractor.swift */; };
+		0F9A6CCE28231E83008EDF32 /* ProductListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A6CCD28231E83008EDF32 /* ProductListViewControllerTests.swift */; };
+		0F9A6CD028231EA0008EDF32 /* ProductListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A6CCF28231EA0008EDF32 /* ProductListPresenterTests.swift */; };
 		8F69569E2821B7F300436F67 /* EndpointProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F69569D2821B7F300436F67 /* EndpointProvider.swift */; };
 		8F6956A22821E81C00436F67 /* ProductsWebServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6956A12821E81C00436F67 /* ProductsWebServiceTests.swift */; };
 		8F6956A62821EE7100436F67 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6956A52821EE7100436F67 /* NetworkError.swift */; };
@@ -87,6 +89,8 @@
 		0F9A6CC72823117A008EDF32 /* MockWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockWebService.swift; sourceTree = "<group>"; };
 		0F9A6CC92823126C008EDF32 /* ProductListInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListInteractorTests.swift; sourceTree = "<group>"; };
 		0F9A6CCB28231376008EDF32 /* MockProductListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProductListInteractor.swift; sourceTree = "<group>"; };
+		0F9A6CCD28231E83008EDF32 /* ProductListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListViewControllerTests.swift; sourceTree = "<group>"; };
+		0F9A6CCF28231EA0008EDF32 /* ProductListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListPresenterTests.swift; sourceTree = "<group>"; };
 		8F69569D2821B7F300436F67 /* EndpointProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointProvider.swift; sourceTree = "<group>"; };
 		8F6956A12821E81C00436F67 /* ProductsWebServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsWebServiceTests.swift; sourceTree = "<group>"; };
 		8F6956A52821EE7100436F67 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -227,6 +231,7 @@
 		0F9A6CBD2822F48A008EDF32 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0F9A6CCD28231E83008EDF32 /* ProductListViewControllerTests.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -234,6 +239,7 @@
 		0F9A6CBE2822F497008EDF32 /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
+				0F9A6CCF28231EA0008EDF32 /* ProductListPresenterTests.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -499,7 +505,9 @@
 				8F6956A22821E81C00436F67 /* ProductsWebServiceTests.swift in Sources */,
 				0F9A6CC32822F6B8008EDF32 /* NetworkClientMock.swift in Sources */,
 				0F9A6CC12822F4F8008EDF32 /* MockProductListPresenter.swift in Sources */,
+				0F9A6CD028231EA0008EDF32 /* ProductListPresenterTests.swift in Sources */,
 				0F9A6CCA2823126C008EDF32 /* ProductListInteractorTests.swift in Sources */,
+				0F9A6CCE28231E83008EDF32 /* ProductListViewControllerTests.swift in Sources */,
 				A877814E28171AF700A9584E /* CapitalOneShoppingCartDemoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
