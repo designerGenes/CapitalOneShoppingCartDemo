@@ -172,7 +172,7 @@ class ProductTableViewCell:UITableViewCell {
                             paddingBottom: 10.0,
                             paddingRight: 10.0,
                             width: 100.0,
-                            height: 0.0,
+                            height: 90.0,
                             enableInsets: false)
         
         addToCartButton.anchor(top: productImage.bottomAnchor ,
@@ -184,7 +184,7 @@ class ProductTableViewCell:UITableViewCell {
                             paddingBottom: 10.0,
                             paddingRight: 10.0,
                             width: 100.0,
-                            height: 0.0,
+                            height: 25.0,
                             enableInsets: false)
         
     }

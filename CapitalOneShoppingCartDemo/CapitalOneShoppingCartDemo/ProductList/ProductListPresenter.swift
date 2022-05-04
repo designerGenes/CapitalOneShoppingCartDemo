@@ -38,6 +38,7 @@ class ProductListPresenter: ProductListPresenterProtocol {
                 print("Product List")
                 self?.updateProductList(products: $0 ?? [])
             })
+            .store(in: &cancellables)
     }
     
     func productsCount() -> Int {

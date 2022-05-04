@@ -28,10 +28,7 @@ class ProductsWebService:ProductWebserviceProtocol{
             .map{$0?.products}
             .print()
             .receive(on: RunLoop.main, options: nil)
-            .eraseToAnyPublisher()
-        
-        
-        
+            .eraseToAnyPublisher()   
     }
 
 }

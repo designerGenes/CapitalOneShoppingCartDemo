@@ -113,9 +113,7 @@ extension ProductListViewController : UITableViewDataSource {
         guard let imageURL = product.thumbnail else {
             return UITableViewCell()
         }
-        ImageCacheLoader().obtainImageWithPath(imagePath: imageURL) { image in
-            cell.productImage.image = image
-        }
+        cell.productImage.loadImageUsingCacheWithUrlString(urlString: imageURL)
         return cell
     }
     
