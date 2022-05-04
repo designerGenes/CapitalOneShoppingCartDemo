@@ -8,7 +8,7 @@
 import Foundation
 
 protocol Repository {
-    associatedtype T
+    associatedtype T: Codable
     static var storageKey: String { get }
     func getAll() -> [T]
     func get(id: Int) -> T?
@@ -17,12 +17,15 @@ protocol Repository {
 
 extension Repository {
     func getAll() -> [T] {
-         let decodedObject = UserDefaults.standard.array(forKey: Self.storageKey) as! Data
-        guard let decodedData = try PropertyListDecoder().decode(Cart.self, from: decodedObject) as! [T] else {
-            return nil
+        let savedArray = UserDefaults.standard.array(forKey: Self.storageKey) ?? []
+        if let typedArray = savedArray as? [T] {
+            return typedArray
+        } else if let dataArray = savedArray as? [Data] {
+            let decoder = PropertyListDecoder()
+            let decodedArray = dataArray.map({ try? decoder.decode(T.self, from: $0 ) })
+            return (decodedArray as? [T]) ?? []
         }
-        return decodedObject
-       
-       // return UserDefaults.standard.array(forKey: Self.storageKey) as? [T] ?? []
+        
+        return []
     }
 }
