@@ -104,6 +104,7 @@ extension ProductListViewController : UITableViewDataSource {
         cell.productImage.image = nil
         cell.titleLabel.text = product.title
         cell.descriptionLabel.text = product.description
+        cell.starRatingsView.rating = Int(product.rating)
         cell.priceLabel.text =  "$" + "\(product.price)"
         cell.stockLabel.text =  "\(product.stock) units are in stock"
         cell.addToCartButton.setTitle("Add to Cart", for: .normal)
