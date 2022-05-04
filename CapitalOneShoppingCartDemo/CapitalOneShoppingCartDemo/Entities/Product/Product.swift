@@ -7,8 +7,7 @@
 
 import Foundation
 
-// Holds product details 
-struct Product: Codable,Equatable{
+struct Product: Codable, Equatable {
     let id: Int
     let title: String
     let price: Int
@@ -24,5 +23,4 @@ struct Product: Codable,Equatable{
     static var emptyProduct: Product {
         Product(id: 0, title: "", price: 5, description: "", discountPercentage: 40.0, rating: 3.4, stock: 45, brand: "", category: "", thumbnail: "")
     }
-    
 }
