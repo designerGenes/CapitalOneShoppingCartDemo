@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 
 class CartListTableViewCell: UITableViewCell {
+    
+    //MARK: - Outlets
     private let productNameLabel : UILabel = {
         let lbl = UILabel()
         lbl.textColor = .black
@@ -27,8 +29,9 @@ class CartListTableViewCell: UITableViewCell {
 
     private let productRemoveButton : UIButton = {
         let btn = UIButton()
+        btn.layer.cornerRadius = 5 //TMP
+        btn.layer.masksToBounds = true
         btn.backgroundColor = .red //TMP
-        btn.layer.cornerRadius = 10 //TMP
         btn.titleLabel?.textColor = .white //TMP
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 12) //TMP
         return btn
@@ -40,10 +43,9 @@ class CartListTableViewCell: UITableViewCell {
         imgView.clipsToBounds = true
         return imgView
     }()
-
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-       
+    
+    //MARK: - Constraints Methods
+    func setup(){
         addSubview(productImage)
         addSubview(productNameLabel)
         addSubview(productPriceLabel)
@@ -56,13 +58,20 @@ class CartListTableViewCell: UITableViewCell {
         productNameLabel.anchor(top: topAnchor, left: productImage.rightAnchor, bottom: nil, right: nil, paddingTop: 20, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: frame.size.width / 2, height: 0, enableInsets: false)
         productPriceLabel.anchor(top: productNameLabel.bottomAnchor, left: productImage.rightAnchor, bottom: bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 10, paddingBottom: 20, paddingRight: 0, width: frame.size.width - 120, height: 0, enableInsets: false)
         productRemoveButton.anchor(top: productPriceLabel.topAnchor, left: productPriceLabel.rightAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 5, paddingBottom: 0, paddingRight: 10, width: 80, height: 30, enableInsets: false)
+    }
+    
+    //MARK: - Setup Data
+    func setupCell(withProduct:AnyObject){ //TMP
+        productNameLabel.text = "iPhone 9"
+        productPriceLabel.text = "$ 549"
+        productImage.image = UIImage(named: "thumbnail")
+        productRemoveButton.setTitle("Remove", for: .normal)
+    }
 
-
-        productNameLabel.text  = "iPhone" //TMP
-        productPriceLabel.text  = "$ 10,000" //TMP
-        productImage.image = UIImage(named: "thumbnail") //TMP
-        productRemoveButton.setTitle("Remove", for: .normal) //TMP
-
+    //MARK: - View Life Cycle
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setup()
     }
     
     required init?(coder: NSCoder) {
