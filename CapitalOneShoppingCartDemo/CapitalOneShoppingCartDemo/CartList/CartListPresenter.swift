@@ -9,21 +9,28 @@ import Foundation
 import Combine
 
 protocol CartListPresenterProtocol {
-    var productsListPublisher: AnyPublisher<Void, Never> { get }
-    func initiateProductList()
-    func getAllProducts() -> [Product]
-    func productsCount() -> Int
-    func getCurrentProduct(at index:Int) -> Product
+    func getCartProducts() -> [Product]
+    func initiateCartProductList()
+
 }
 
-class CartListPresenter{
+class CartListPresenter:CartListPresenterProtocol{
+
     private let interactor: CartListInteractor
-    
-    var cart: [Cart] = []
+    var products: [Product] = []
     
     init(interactor: CartListInteractor) {
         self.interactor = interactor
-        cart = interactor.repository.getAll()
+    }
+    
+    /// Initiates the call to retreive the product list service
+func initiateCartProductList() {
+        products = interactor.productList()
+    }
+
+    
+    func getCartProducts() -> [Product] {
+        return products
     }
 
 }

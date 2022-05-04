@@ -17,6 +17,12 @@ protocol Repository {
 
 extension Repository {
     func getAll() -> [T] {
-        return UserDefaults.standard.array(forKey: Self.storageKey) as? [T] ?? []
+         let decodedObject = UserDefaults.standard.array(forKey: Self.storageKey) as! Data
+        guard let decodedData = try PropertyListDecoder().decode(Cart.self, from: decodedObject) as! [T] else {
+            return nil
+        }
+        return decodedObject
+       
+       // return UserDefaults.standard.array(forKey: Self.storageKey) as? [T] ?? []
     }
 }

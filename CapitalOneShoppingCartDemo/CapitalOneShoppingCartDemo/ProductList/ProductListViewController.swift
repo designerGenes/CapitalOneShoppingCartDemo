@@ -108,7 +108,9 @@ extension ProductListViewController : UITableViewDataSource {
         cell.priceLabel.text =  "$" + "\(product.price)"
         cell.stockLabel.text =  "\(product.stock) units are in stock"
         cell.addToCartButton.setTitle("Add to Cart", for: .normal)
-        
+        cell.addToCartButton.tag = indexPath.row
+        cell.addToCartButton.addTarget(self, action: #selector(checkoutButtonAction), for: .touchUpInside)
+
  
         guard let imageURL = product.thumbnail else {
             return UITableViewCell()
@@ -117,7 +119,18 @@ extension ProductListViewController : UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+    }
     
+
+    @objc func checkoutButtonAction(sender: UIButton!) {
+        let product = productListPresenter.getCurrentProduct(at: sender.tag)
+        var productRepository: ProductsRepository = ProductsRepository()
+        productRepository.set(record: product)
+        
+        
+    }
 }
 
 extension ProductListViewController : UITableViewDelegate {

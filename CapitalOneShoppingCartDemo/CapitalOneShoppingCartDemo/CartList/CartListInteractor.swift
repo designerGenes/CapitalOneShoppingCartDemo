@@ -10,7 +10,7 @@ import Combine
 
 ///  Responsible for receiving an input, perform an operation using that input and comunicating the output of that operation.
 protocol CartListInteractorProtocol{
-    func productList() -> [Cart]
+    func productList() -> [Product]
 }
 /// Responsible to obtain the productlist form webservice and return the values to presenter.
 class CartListInteractor:CartListInteractorProtocol{
@@ -23,8 +23,8 @@ class CartListInteractor:CartListInteractorProtocol{
     
     /// Called by  presenter to retreive the list of products
     /// Returns the produts-array/Error to presenter
-    func productList() -> [Cart] {
-        return self.repository.getAll()
+    func productList() -> [Product] {
+        return self.repository.getAllProductsInCart()
     }
 
 

@@ -23,7 +23,12 @@ class ProductsRepository: NSObject, Repository {
     }
     
     func set(records: [Product]) {
-        UserDefaults.standard.set(records, forKey: ProductsRepository.storageKey)
+
+
+        guard let encodedData = try? PropertyListEncoder().encode(records) else {
+                return
+            }
+        UserDefaults.standard.set(encodedData, forKey: ProductsRepository.storageKey)
     }
 
 }

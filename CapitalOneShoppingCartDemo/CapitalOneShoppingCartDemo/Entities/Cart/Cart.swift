@@ -7,19 +7,19 @@
 
 import Foundation
 
-class Cart: NSObject {
-    var productIds = [String]()
+struct Cart: Codable, Equatable {
+    var productIds = [Int]()
     
-    func addProduct(id: String) {
+    mutating func addProduct(id: Int) {
         guard !productIds.contains(id) else {
             return
         }
-        productIds.append(id)
+        self.productIds.append(id)
         CartsRepository().set(record: self)
     }
     
-    func removeProduct(id: String) {
-        productIds = productIds.filter({$0 != id})
+    mutating func removeProduct(id: Int) {
+        self.productIds = self.productIds.filter({$0 != id})
         CartsRepository().set(record: self)
     }
     
