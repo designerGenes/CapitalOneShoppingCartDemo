@@ -10,8 +10,11 @@ import UIKit
 
 
 class CartListViewController: UIViewController {
+    
+    //MARK: - Outlets
     private let cartListView = CartListView()
     
+    //MARK: - ViewDid LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,8 +30,9 @@ class CartListViewController: UIViewController {
 
     }
     
+    //MARK: - Button Actions
     @objc func checkoutButtonAction(sender: UIButton!) {
-        let alert = UIAlertController(title: "Success", message: "Your order is successfully received. Please check your email for more information.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Thanks For Shopping With Us!", message: "Your order has been successfully placed. Please check your email for more information.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
             switch action.style{
                 case .default:
@@ -51,6 +55,7 @@ class CartListViewController: UIViewController {
 
 extension CartListViewController : UITableViewDelegate, UITableViewDataSource{
   
+    //MARK: - TableView Delegates & DataSources
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -61,11 +66,9 @@ extension CartListViewController : UITableViewDelegate, UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "CartListTableViewCell", for: indexPath) as? CartListTableViewCell {
+            cell.setupCell(withProduct: ["":""] as! AnyObject) //TMP
             return cell
         }
-
-        //cell.setupCell(withProduct: product)
-
         return UITableViewCell()
     }
 

@@ -10,6 +10,8 @@ import UIKit
 
 
 class CartListView: UIView {
+    
+    //MARK: - Outlets
     var cartTableView: UITableView?
     var cartTotalContainerView: UIView?
     
@@ -69,14 +71,16 @@ class CartListView: UIView {
 
     let checkoutButton : UIButton = {
         let btn = UIButton()
-        btn.backgroundColor = .lightGray //TMP
         btn.layer.cornerRadius = 5 //TMP
+        btn.layer.masksToBounds = true
+        btn.backgroundColor = .lightGray //TMP
         btn.titleLabel?.textColor = .black //TMP
         btn.setTitle("CHECKOUT", for: .normal)
         btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12) //TMP
         return btn
     }()
 
+    //MARK: - Constraints Methods
     private func setCartTotalView(){
         cartTotalContainerView?.addSubview(subTotalTitleLabel)
         cartTotalContainerView?.addSubview(subTotalPrice)
@@ -126,6 +130,7 @@ class CartListView: UIView {
 
     }
     
+    //MARK: - View Life Cycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
