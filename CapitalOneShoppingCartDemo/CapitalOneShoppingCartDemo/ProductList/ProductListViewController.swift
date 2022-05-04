@@ -51,6 +51,10 @@ class ProductListViewController: UIViewController {
         }
         presenterProtocol.initiateProductList()
         self.products = presenterProtocol.getAllProducts()
+        
+        let repo = ProductsRepository()
+        repo.set(records: self.productListPresenter.getAllProducts())
+
     }
     
     private func sinkToPublishers() {
@@ -109,6 +113,8 @@ extension ProductListViewController : UITableViewDataSource {
         cell.stockLabel.text =  "\(product.stock) units are in stock"
         cell.addToCartButton.setTitle("Add to Cart", for: .normal)
         cell.addToCartButton.tag = indexPath.row
+        
+        //TMP
         cell.addToCartButton.addTarget(self, action: #selector(checkoutButtonAction), for: .touchUpInside)
 
  
@@ -126,9 +132,10 @@ extension ProductListViewController : UITableViewDataSource {
 
     @objc func checkoutButtonAction(sender: UIButton!) {
         let product = productListPresenter.getCurrentProduct(at: sender.tag)
-        var productRepository: ProductsRepository = ProductsRepository()
-        productRepository.set(record: product)
-        
+
+        let repo = CartsRepository()
+        let cart = repo.getCart()
+        cart.addProduct(id: product.id)
         
     }
 }

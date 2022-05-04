@@ -23,8 +23,6 @@ class ProductsRepository: NSObject, Repository {
     }
     
     func set(records: [Product]) {
-
-
         guard let encodedData = try? PropertyListEncoder().encode(records) else {
                 return
             }
