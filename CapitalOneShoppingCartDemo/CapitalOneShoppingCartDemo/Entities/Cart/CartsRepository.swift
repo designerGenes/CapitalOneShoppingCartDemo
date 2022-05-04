@@ -13,18 +13,18 @@ class CartsRepository: NSObject, Repository {
     static var storageForProductsKey: String { String(describing: ProductsRepository.self) }
     
     var products: [Product] = []
-    var productRepository: ProductsRepository = ProductsRepository()
+    
     
 
     
     func getAllProductsInCart() -> [Product]{
-        var arrProduct:[Product] = [Product]()
+        var arrProduct: [Product] = [Product]()
+        let productRepository = ProductsRepository()
        
-        if let cart = getCart() as? Cart{
-            for item in cart.productIds{
-                arrProduct.append(self.productRepository.get(id: item) ?? Product.emptyProduct)
-            }
+        for item in getCart().productIds {
+            arrProduct.append(productRepository.get(id: item) ?? Product.emptyProduct)
         }
+        
         
         print(arrProduct)
         return arrProduct

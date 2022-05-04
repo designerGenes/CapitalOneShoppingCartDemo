@@ -45,16 +45,14 @@ class ProductListViewController: UIViewController {
         setupNavigationWithAddToCartButton()
         sinkToPublishers()
         
-        guard let presenterProtocol = self.productListPresenter else {
+        guard let presenter = self.productListPresenter else {
             print ("Not initialised")
             return
         }
-        presenterProtocol.initiateProductList()
-        self.products = presenterProtocol.getAllProducts()
-        
-        let repo = ProductsRepository()
-        repo.set(records: self.productListPresenter.getAllProducts())
-
+        presenter.initiateProductList {
+            self.products = presenter.getAllProducts()
+            ProductsRepository().set(records: self.products)
+        }
     }
     
     private func sinkToPublishers() {
