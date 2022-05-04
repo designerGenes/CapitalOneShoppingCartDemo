@@ -15,8 +15,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        let productListVC = ProductListViewController()
-        window?.rootViewController = productListVC
+        let productListVC = ProductListViewController(with: ProductListPresenter(interactor: ProductListInteractor(webService: ProductsWebService())))
+        let navigationController = UINavigationController()
+        navigationController.viewControllers = [productListVC]
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
 

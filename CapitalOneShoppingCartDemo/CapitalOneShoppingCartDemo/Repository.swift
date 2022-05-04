@@ -11,7 +11,7 @@ protocol Repository {
     associatedtype T
     static var storageKey: String { get }
     func getAll() -> [T]
-    func get(id: String) -> T?
+    func get(id: Int) -> T?
     func set(record: T)
 }
 
