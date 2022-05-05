@@ -24,7 +24,7 @@ class ProductListPresenter: ProductListPresenterProtocol {
     private var updateProductsListPublisher = PassthroughSubject<Void, Never>()
     private let productListInteractor: ProductListInteractorProtocol
     private var cancellables = Set<AnyCancellable>()
-    private var products : [Product] = []
+    @Published private var products : [Product] = []
     
     required init(interactor:ProductListInteractorProtocol){
         self.productListInteractor = interactor

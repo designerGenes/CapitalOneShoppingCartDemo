@@ -44,6 +44,7 @@ class ProductListViewController: UIViewController {
         setupTableView()
         setupNavigationWithAddToCartButton()
         sinkToPublishers()
+        self.title = "Product List"
         
         guard let presenterProtocol = self.productListPresenter else {
             print ("Not initialised")
