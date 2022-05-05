@@ -333,7 +333,6 @@
 				A877813F28171AF700A9584E /* Assets.xcassets */,
 				A877814128171AF700A9584E /* LaunchScreen.storyboard */,
 				A877814428171AF700A9584E /* Info.plist */,
-				A877816A28204FAF00A9584E /* Repository.swift */,
 			);
 			path = CapitalOneShoppingCartDemo;
 			sourceTree = "<group>";
@@ -359,6 +358,7 @@
 		A877816C28206F2500A9584E /* Product */ = {
 			isa = PBXGroup;
 			children = (
+				A877816A28204FAF00A9584E /* Repository.swift */,
 				A877816D28206F3300A9584E /* ProductsRepository.swift */,
 			);
 			path = Product;
