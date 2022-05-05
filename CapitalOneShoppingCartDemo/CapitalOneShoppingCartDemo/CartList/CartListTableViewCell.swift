@@ -11,6 +11,10 @@ import UIKit
 class CartListTableViewCell: UITableViewCell {
     
     //MARK: - Outlets
+    public static var reuseIdentifier: String {
+        return String(describing: self)
+    }
+
     let productNameLabel : UILabel = {
         let lbl = UILabel()
         lbl.textColor = .black

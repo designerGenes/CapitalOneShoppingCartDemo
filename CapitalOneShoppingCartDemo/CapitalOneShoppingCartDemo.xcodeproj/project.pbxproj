@@ -34,6 +34,8 @@
 		0F9A6CDB28242EA2008EDF32 /* CartListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A6CDA28242EA2008EDF32 /* CartListPresenterTests.swift */; };
 		0F9A6CDD282437BC008EDF32 /* CartListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A6CDC282437BC008EDF32 /* CartListViewControllerTests.swift */; };
 		0F9A6CDF282437CF008EDF32 /* CartListInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A6CDE282437CF008EDF32 /* CartListInteractorTests.swift */; };
+		5628ED8128243ED40055A0D6 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5628ED8028243ED40055A0D6 /* ProgressView.swift */; };
+		5628ED8328243F110055A0D6 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5628ED8228243F110055A0D6 /* UIColor+Extension.swift */; };
 		8F69569E2821B7F300436F67 /* EndpointProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F69569D2821B7F300436F67 /* EndpointProvider.swift */; };
 		8F6956A22821E81C00436F67 /* ProductsWebServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6956A12821E81C00436F67 /* ProductsWebServiceTests.swift */; };
 		8F6956A62821EE7100436F67 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6956A52821EE7100436F67 /* NetworkError.swift */; };
@@ -97,6 +99,8 @@
 		0F9A6CDA28242EA2008EDF32 /* CartListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartListPresenterTests.swift; sourceTree = "<group>"; };
 		0F9A6CDC282437BC008EDF32 /* CartListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartListViewControllerTests.swift; sourceTree = "<group>"; };
 		0F9A6CDE282437CF008EDF32 /* CartListInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartListInteractorTests.swift; sourceTree = "<group>"; };
+		5628ED8028243ED40055A0D6 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		5628ED8228243F110055A0D6 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		8F69569D2821B7F300436F67 /* EndpointProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointProvider.swift; sourceTree = "<group>"; };
 		8F6956A12821E81C00436F67 /* ProductsWebServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsWebServiceTests.swift; sourceTree = "<group>"; };
 		8F6956A52821EE7100436F67 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -195,6 +199,7 @@
 		0F9A6CAE281C5FC8008EDF32 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				5628ED8228243F110055A0D6 /* UIColor+Extension.swift */,
 				0F9A6CAF281C5FDE008EDF32 /* UiView+Extension.swift */,
 				0F9A6CB72821FA8E008EDF32 /* ImageCacheLoader.swift */,
 			);
@@ -300,6 +305,14 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		5628ED7F28243EC50055A0D6 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				5628ED8028243ED40055A0D6 /* ProgressView.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		A877812A28171AF600A9584E = {
 			isa = PBXGroup;
 			children = (
@@ -323,6 +336,7 @@
 		A877813528171AF600A9584E /* CapitalOneShoppingCartDemo */ = {
 			isa = PBXGroup;
 			children = (
+				5628ED7F28243EC50055A0D6 /* Utility */,
 				0F9A6CAE281C5FC8008EDF32 /* Extensions */,
 				0F9A6CA6281C5553008EDF32 /* WebService */,
 				0F9A6CA2281C43F8008EDF32 /* Entities */,
@@ -510,6 +524,7 @@
 				0F9A6C9F281C43E0008EDF32 /* CartListPresenter.swift in Sources */,
 				0F9A6CA1281C43EE008EDF32 /* CartListInteractor.swift in Sources */,
 				A877816E28206F3300A9584E /* ProductsRepository.swift in Sources */,
+				5628ED8328243F110055A0D6 /* UIColor+Extension.swift in Sources */,
 				0F9A6C9D281C43D5008EDF32 /* CartListViewController.swift in Sources */,
 				0F9A6C92281C4374008EDF32 /* ProductListViewController.swift in Sources */,
 				A877817528206FA700A9584E /* Cart.swift in Sources */,
@@ -519,6 +534,7 @@
 				A877816B28204FAF00A9584E /* Repository.swift in Sources */,
 				A877813728171AF600A9584E /* AppDelegate.swift in Sources */,
 				0F9A6C94281C438B008EDF32 /* ProductListPresenter.swift in Sources */,
+				5628ED8128243ED40055A0D6 /* ProgressView.swift in Sources */,
 				A877817128206F5500A9584E /* CartsRepository.swift in Sources */,
 				A877813928171AF600A9584E /* SceneDelegate.swift in Sources */,
 				8F69569E2821B7F300436F67 /* EndpointProvider.swift in Sources */,
