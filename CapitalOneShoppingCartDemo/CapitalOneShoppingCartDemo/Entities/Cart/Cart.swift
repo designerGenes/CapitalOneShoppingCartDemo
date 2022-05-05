@@ -8,8 +8,10 @@
 import Foundation
 
 class Cart: NSObject, Codable {
+    //MARK: - Variables
     var productIds = [Int]()
     
+    //MARK: - Custom Methods
     func addProduct(id: Int) {
         guard !productIds.contains(id) else {
             return
@@ -22,6 +24,5 @@ class Cart: NSObject, Codable {
         self.productIds = self.productIds.filter({$0 != id})
         CartsRepository().set(record: self)
     }
-    
     
 }

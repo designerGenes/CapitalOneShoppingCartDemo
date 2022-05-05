@@ -19,7 +19,7 @@ class ProductListViewController: UIViewController {
     
     var productListPresenter: ProductListPresenterProtocol!
     private var cancellables = Set<AnyCancellable>()
-    
+        
     private var products = [Product](){
         didSet{
             productListView.tableView.reloadData()
@@ -53,6 +53,10 @@ class ProductListViewController: UIViewController {
             self.products = presenter.getAllProducts()
             ProductsRepository().set(records: self.products)
         }
+//        presenterProtocol.initiateProductList()
+//        self.products = presenterProtocol.getAllProducts()
+        
+
     }
     
     private func sinkToPublishers() {
@@ -83,10 +87,14 @@ class ProductListViewController: UIViewController {
     @objc private func navigateToCartScreen() {
         print("Show Next Cart List Screen")
         //TODO: Uncomment when we merge Ritu and Jaden work for CartList
+        let cartListViewController = CartListViewController(with: CartListPresenter(interactor: CartListInteractor(repository: CartsRepository())))
         
-        let cartListViewController = CartListViewController()
+        cartListViewController.presetControlPassthroughSubject
+            .sink{[weak self] productId in
+                self?.productListView.tableView.reloadData()
+            }
+            .store(in: &self.cancellables)
         self.navigationController?.present(cartListViewController, animated: true) {
-            //TODO: Add Code if needed
         }
         
     }
@@ -103,17 +111,26 @@ extension ProductListViewController : UITableViewDataSource {
         }
         let product = productListPresenter.getCurrentProduct(at: indexPath.row)
         
+        cell.selectionStyle = .none
         cell.productImage.image = nil
         cell.titleLabel.text = product.title
         cell.descriptionLabel.text = product.description
         cell.starRatingsView.rating = Int(product.rating)
         cell.priceLabel.text =  "$" + "\(product.price)"
         cell.stockLabel.text =  "\(product.stock) units are in stock"
-        cell.addToCartButton.setTitle("Add to Cart", for: .normal)
-        cell.addToCartButton.tag = indexPath.row
         
-        //TMP
-        cell.addToCartButton.addTarget(self, action: #selector(checkoutButtonAction), for: .touchUpInside)
+        if productListPresenter.productIsAvailableInCart(productId: product.id) == true{
+            cell.addToCartButton.alpha = 0.5
+            cell.addToCartButton.isUserInteractionEnabled = false
+            cell.addToCartButton.setTitle("Add to Cart", for: .normal)
+        }else{
+            cell.addToCartButton.alpha = 1
+            cell.addToCartButton.isUserInteractionEnabled = true
+            cell.addToCartButton.setTitle("Add to Cart", for: .normal)
+            cell.addToCartButton.tag = indexPath.row
+            //TMP
+            cell.addToCartButton.addTarget(self, action: #selector(checkoutButtonAction), for: .touchUpInside)
+        }
 
  
         guard let imageURL = product.thumbnail else {
@@ -129,12 +146,14 @@ extension ProductListViewController : UITableViewDataSource {
     
 
     @objc func checkoutButtonAction(sender: UIButton!) {
+        
         let product = productListPresenter.getCurrentProduct(at: sender.tag)
-
+        
         let repo = CartsRepository()
         let cart = repo.getCart()
         cart.addProduct(id: product.id)
-        
+        self.productListView.tableView.reloadData()
+
     }
 }
 

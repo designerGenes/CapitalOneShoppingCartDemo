@@ -12,47 +12,93 @@ import Combine
 class CartListViewController: UIViewController {
     
     //MARK: - Outlets
-    private let cartListView = CartListView()
+    let cartListView = CartListView()
     
     //MARK: - Variables
-    var presenter: CartsRepository = CartsRepository()
+    var cartListPresenter: CartListPresenterProtocol!
+    private var cancellables = Set<AnyCancellable>()
+    let presetControlPassthroughSubject = PassthroughSubject<Int,Never>()
     
+    private var products = [Product](){
+        didSet{
+            cartListView.cartTableView?.reloadData()
+        }
+    }
+    
+
     //MARK: - ViewDid LifeCycle
+    @available(*,unavailable,renamed: "init()")
+    required init?(coder:NSCoder){
+        super.init(coder: coder)!
+    }
+    
+    init(with presenter: CartListPresenterProtocol) {
+        self.cartListPresenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter.getAllProductsInCart()
-      //  print(presenter.cart)
+
         self.view.addSubview(cartListView)
         cartListView.translatesAutoresizingMaskIntoConstraints = false
         cartListView.constrainToFillSuperview()
-        
         self.cartListView.cartTableView?.delegate = self
         self.cartListView.cartTableView?.dataSource = self
         self.cartListView.cartTableView?.register(CartListTableViewCell.self, forCellReuseIdentifier: "CartListTableViewCell")
-
         self.cartListView.checkoutButton.addTarget(self, action: #selector(checkoutButtonAction), for: .touchUpInside)
+        
+        //Sinked to Publisher for updates
+        sinkToPublishers()
 
+        guard let presenterProtocol = self.cartListPresenter else {
+            print ("Not initialised")
+            return
+        }
+        presenterProtocol.initiateCartProductList()
+        self.products = presenterProtocol.getCartProducts()
+        
+
+        self.cartListView.subTotalPrice.text = "$ \(presenterProtocol.getSubTotal())"
+        self.cartListView.taxesPrice.text = "$ \(presenterProtocol.getTaxes())"
+        self.cartListView.totalPrice.text = "$ \(presenterProtocol.getTotal())"
+        
     }
+    
+
+    //MARK: - Publisher
+    private func sinkToPublishers() {
+        cartListPresenter?.cartListPublisher.sink {
+            self.cartListView.cartTableView?.reloadData()
+            self.cartListView.subTotalPrice.text = "$ \(self.cartListPresenter.getSubTotal())"
+            self.cartListView.taxesPrice.text = "$ \(self.cartListPresenter.getTaxes())"
+            self.cartListView.totalPrice.text = "$ \(self.cartListPresenter.getTotal())"
+
+        }.store(in: &cancellables)
+    }
+
     
     //MARK: - Button Actions
     @objc func checkoutButtonAction(sender: UIButton!) {
-        let alert = UIAlertController(title: "Thanks For Shopping With Us!", message: "Your order has been successfully placed. Please check your email for more information.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
-            switch action.style{
-                case .default:
-                print("default")
-                
-                case .cancel:
-                print("cancel")
-                
-                case .destructive:
-                print("destructive")
-                
-            @unknown default:
-                print("default")
-            }
-        }))
-        self.present(alert, animated: true, completion: nil)
+        if self.cartListView.totalPrice.text != "$ 0.0"{
+            let alert = UIAlertController(title: "Thanks For Shopping With Us!", message: "Your order has been successfully placed. Please check your email for more information.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                switch action.style{
+                    case .default:
+                    print("default")
+                    
+                    case .cancel:
+                    print("cancel")
+                    
+                    case .destructive:
+                    print("destructive")
+                    
+                @unknown default:
+                    print("default")
+                }
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
 }
@@ -65,15 +111,35 @@ extension CartListViewController : UITableViewDelegate, UITableViewDataSource{
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2 //TMP
+        if self.cartListPresenter != nil{
+            return self.cartListPresenter.productsCount()
+        }else{
+            return 0
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "CartListTableViewCell", for: indexPath) as? CartListTableViewCell {
-            cell.setupCell(withProduct: ["":""] as! AnyObject) //TMP
+            let product = cartListPresenter.getCurrentProduct(at: indexPath.row)
+            cell.setupCell(product: product)
+            cell.selectionStyle = .none
+            
             return cell
         }
         return UITableViewCell()
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+            
+            if editingStyle == .delete {
+                let product = cartListPresenter.getCurrentProduct(at: indexPath.row)
+                let repo = CartsRepository()
+                let cart = repo.getCart()
+                cart.removeProduct(id: product.id)
+                cartListPresenter.updateProductList()
+                presetControlPassthroughSubject.send(product.id)
+             //   tableView.deleteRows(at: [indexPath], with: .bottom)
+            }
+        }
 
 }

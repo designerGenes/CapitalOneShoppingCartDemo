@@ -16,6 +16,7 @@ protocol ProductListPresenterProtocol {
     func getAllProducts() -> [Product]
     func productsCount() -> Int
     func getCurrentProduct(at index:Int) -> Product
+    func productIsAvailableInCart(productId: Int) -> Bool
 }
 
 // Implements the data conversion to presentable format to view
@@ -47,6 +48,16 @@ class ProductListPresenter: ProductListPresenterProtocol {
     
     func getAllProducts() -> [Product] {
         return self.products
+    }
+    
+    func productIsAvailableInCart(productId: Int) -> Bool{
+        let cartRepository = CartsRepository()
+        if cartRepository.getCart().productIds.count > 0 {
+            if cartRepository.getCart().productIds.contains(productId){
+                return true
+            }
+        }
+        return false
     }
     
     private func updateProductList(products: [Product]) {
