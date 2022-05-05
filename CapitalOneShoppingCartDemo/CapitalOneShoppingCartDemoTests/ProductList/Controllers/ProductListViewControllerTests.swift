@@ -59,16 +59,5 @@ class ProductListViewControllerTests: XCTestCase {
         let expectedReuseIdentifier = ProductTableViewCell.reuseIdentifier
         XCTAssertEqual(actualReuseIdentifer, expectedReuseIdentifier)
     }
-
-//    func testTableCellHasCorrectLabelText() {
-//        
-//        viewControllerUnderTest.productListView.tableView.reloadData()
-//        let cell0 = viewControllerUnderTest.tableView(viewControllerUnderTest.productListView.tableView, cellForRowAt: IndexPath(row: 0, section: 0)) as? ProductTableViewCell
-//        
-//        XCTAssertEqual(cell0?.titleLabel.text, "iPhone 9")
-//        
-//        let cell1 = viewControllerUnderTest.tableView(viewControllerUnderTest.productListView.tableView, cellForRowAt: IndexPath(row: 1, section: 0)) as? ProductTableViewCell
-//        XCTAssertEqual(cell1?.titleLabel.text, "iPhone X")
-//    }
 }
 
