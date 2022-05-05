@@ -10,7 +10,7 @@ import Combine
 @testable import CapitalOneShoppingCartDemo
 
 class MockProductListPresenter: ProductListPresenterProtocol {
-    
+
     var productsListPublisher: AnyPublisher<Void, Never> = Result.Publisher(()).eraseToAnyPublisher()
     var cancellables: AnyCancellable?
     
@@ -22,6 +22,13 @@ class MockProductListPresenter: ProductListPresenterProtocol {
         cancellables = productsListPublisher.sink(receiveValue: { _ in
             print("Test")
         })
+    }
+    
+    func productIsAvailableInCart(productId: Int) -> Bool {
+        if productId == 10  {
+            return true
+        }
+        return false
     }
     
     func getAllProducts() -> [Product] {

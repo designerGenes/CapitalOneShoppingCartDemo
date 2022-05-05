@@ -87,5 +87,41 @@ class ProductListPresenterTests: XCTestCase {
         expectationWait()
         XCTAssertEqual(presenter.getCurrentProduct(at: 0), testProduct,"It should return the specific product")
     }
+    
+    func testProductListPresenter_initiateProductListCalled_IfProductAvailableinCart_ReturnTrue() {
+        
+        let testProduct = Product.defaultProduct
+        presenter.listOfProducts = [testProduct]
+        cancellable = presenter.productsListPublisher.sink {
+            self.expectation.fulfill()
+        }
+        
+        presenter.initiateProductList()
+        
+        ProductsRepository().set(records: presenter.listOfProducts)
+        let isProductAvailable = presenter.productIsAvailableInCart(productId: testProduct.id)
+        
+        expectationWait()
+        
+        XCTAssertTrue(isProductAvailable,"It should return true but its returning false")
+    }
+    
+    func testProductListPresenter_initiateProductListCalled_IfProductIsNotAvailableinCart_ReturnFalse() {
+        
+        let testProduct = Product.defaultProduct
+        presenter.listOfProducts = [testProduct]
+        cancellable = presenter.productsListPublisher.sink {
+            self.expectation.fulfill()
+        }
+        
+        presenter.initiateProductList()
+        
+        ProductsRepository().set(records: presenter.listOfProducts)
+        let isProductAvailable = presenter.productIsAvailableInCart(productId: 9)
+        
+        expectationWait()
+        
+        XCTAssertFalse(isProductAvailable,"It should return false but its returning true")
+    }
 
 }

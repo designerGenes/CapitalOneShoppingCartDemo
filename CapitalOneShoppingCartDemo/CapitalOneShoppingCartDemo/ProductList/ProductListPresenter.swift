@@ -12,7 +12,7 @@ import UIKit
 
 protocol ProductListPresenterProtocol {
     var productsListPublisher: AnyPublisher<Void, Never> { get }
-    func initiateProductList(completion: (() -> Void)?)
+    func initiateProductList()
     func getAllProducts() -> [Product]
     func productsCount() -> Int
     func getCurrentProduct(at index:Int) -> Product
@@ -33,11 +33,11 @@ class ProductListPresenter: ProductListPresenterProtocol {
     }
     
     /// Initiates the call to retreive the product list service
-    func initiateProductList(completion: (() -> Void)?) {
+    func initiateProductList() {
         productListInteractor.productList().sink(receiveCompletion: { _ in
-            completion?()
         }, receiveValue: { [weak self] in
             self?.updateProductList(products: $0 ?? [])
+            ProductsRepository().set(records: $0 ?? [])
         })
         .store(in: &cancellables)
     }
