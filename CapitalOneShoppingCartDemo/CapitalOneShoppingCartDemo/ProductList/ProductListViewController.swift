@@ -50,10 +50,7 @@ class ProductListViewController: UIViewController {
             print ("Not initialised")
             return
         }
-        presenter.initiateProductList {
-            self.products = presenter.getAllProducts()
-            ProductsRepository().set(records: self.products)
-        }
+        presenter.initiateProductList()
     }
     
     private func sinkToPublishers() {
