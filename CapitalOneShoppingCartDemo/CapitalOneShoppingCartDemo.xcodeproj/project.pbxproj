@@ -29,6 +29,11 @@
 		0F9A6CCC28231376008EDF32 /* MockProductListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A6CCB28231376008EDF32 /* MockProductListInteractor.swift */; };
 		0F9A6CCE28231E83008EDF32 /* ProductListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A6CCD28231E83008EDF32 /* ProductListViewControllerTests.swift */; };
 		0F9A6CD028231EA0008EDF32 /* ProductListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A6CCF28231EA0008EDF32 /* ProductListPresenterTests.swift */; };
+		0F9A6CD728242B89008EDF32 /* MockCartListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A6CD628242B89008EDF32 /* MockCartListPresenter.swift */; };
+		0F9A6CD928242DEE008EDF32 /* MockCartListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A6CD828242DEE008EDF32 /* MockCartListInteractor.swift */; };
+		0F9A6CDB28242EA2008EDF32 /* CartListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A6CDA28242EA2008EDF32 /* CartListPresenterTests.swift */; };
+		0F9A6CDD282437BC008EDF32 /* CartListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A6CDC282437BC008EDF32 /* CartListViewControllerTests.swift */; };
+		0F9A6CDF282437CF008EDF32 /* CartListInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9A6CDE282437CF008EDF32 /* CartListInteractorTests.swift */; };
 		8F69569E2821B7F300436F67 /* EndpointProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F69569D2821B7F300436F67 /* EndpointProvider.swift */; };
 		8F6956A22821E81C00436F67 /* ProductsWebServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6956A12821E81C00436F67 /* ProductsWebServiceTests.swift */; };
 		8F6956A62821EE7100436F67 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6956A52821EE7100436F67 /* NetworkError.swift */; };
@@ -36,10 +41,8 @@
 		8FA27F102820989800DC32E2 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA27F0F2820989700DC32E2 /* NetworkClient.swift */; };
 		A877813728171AF600A9584E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A877813628171AF600A9584E /* AppDelegate.swift */; };
 		A877813928171AF600A9584E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A877813828171AF600A9584E /* SceneDelegate.swift */; };
-		A877813B28171AF600A9584E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A877813A28171AF600A9584E /* ViewController.swift */; };
 		A877814028171AF700A9584E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A877813F28171AF700A9584E /* Assets.xcassets */; };
 		A877814328171AF700A9584E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A877814128171AF700A9584E /* LaunchScreen.storyboard */; };
-		A877814E28171AF700A9584E /* CapitalOneShoppingCartDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A877814D28171AF700A9584E /* CapitalOneShoppingCartDemoTests.swift */; };
 		A877815828171AF700A9584E /* CapitalOneShoppingCartDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A877815728171AF700A9584E /* CapitalOneShoppingCartDemoUITests.swift */; };
 		A877815A28171AF700A9584E /* CapitalOneShoppingCartDemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A877815928171AF700A9584E /* CapitalOneShoppingCartDemoUITestsLaunchTests.swift */; };
 		A8778167281C96A600A9584E /* CartListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8778166281C96A600A9584E /* CartListTableViewCell.swift */; };
@@ -89,6 +92,11 @@
 		0F9A6CCB28231376008EDF32 /* MockProductListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProductListInteractor.swift; sourceTree = "<group>"; };
 		0F9A6CCD28231E83008EDF32 /* ProductListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListViewControllerTests.swift; sourceTree = "<group>"; };
 		0F9A6CCF28231EA0008EDF32 /* ProductListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListPresenterTests.swift; sourceTree = "<group>"; };
+		0F9A6CD628242B89008EDF32 /* MockCartListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCartListPresenter.swift; sourceTree = "<group>"; };
+		0F9A6CD828242DEE008EDF32 /* MockCartListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCartListInteractor.swift; sourceTree = "<group>"; };
+		0F9A6CDA28242EA2008EDF32 /* CartListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartListPresenterTests.swift; sourceTree = "<group>"; };
+		0F9A6CDC282437BC008EDF32 /* CartListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartListViewControllerTests.swift; sourceTree = "<group>"; };
+		0F9A6CDE282437CF008EDF32 /* CartListInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartListInteractorTests.swift; sourceTree = "<group>"; };
 		8F69569D2821B7F300436F67 /* EndpointProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointProvider.swift; sourceTree = "<group>"; };
 		8F6956A12821E81C00436F67 /* ProductsWebServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsWebServiceTests.swift; sourceTree = "<group>"; };
 		8F6956A52821EE7100436F67 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -97,12 +105,10 @@
 		A877813328171AF600A9584E /* CapitalOneShoppingCartDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CapitalOneShoppingCartDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A877813628171AF600A9584E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A877813828171AF600A9584E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A877813A28171AF600A9584E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A877813F28171AF700A9584E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A877814228171AF700A9584E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A877814428171AF700A9584E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A877814928171AF700A9584E /* CapitalOneShoppingCartDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CapitalOneShoppingCartDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A877814D28171AF700A9584E /* CapitalOneShoppingCartDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapitalOneShoppingCartDemoTests.swift; sourceTree = "<group>"; };
 		A877815328171AF700A9584E /* CapitalOneShoppingCartDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CapitalOneShoppingCartDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A877815728171AF700A9584E /* CapitalOneShoppingCartDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapitalOneShoppingCartDemoUITests.swift; sourceTree = "<group>"; };
 		A877815928171AF700A9584E /* CapitalOneShoppingCartDemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapitalOneShoppingCartDemoUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -250,6 +256,50 @@
 			path = Interactor;
 			sourceTree = "<group>";
 		};
+		0F9A6CD128242B2D008EDF32 /* CartList */ = {
+			isa = PBXGroup;
+			children = (
+				0F9A6CD528242B5E008EDF32 /* Controllers */,
+				0F9A6CD428242B57008EDF32 /* Mock */,
+				0F9A6CD328242B4E008EDF32 /* Presenter */,
+				0F9A6CD228242B47008EDF32 /* Interactor */,
+			);
+			path = CartList;
+			sourceTree = "<group>";
+		};
+		0F9A6CD228242B47008EDF32 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				0F9A6CDE282437CF008EDF32 /* CartListInteractorTests.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		0F9A6CD328242B4E008EDF32 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				0F9A6CDA28242EA2008EDF32 /* CartListPresenterTests.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		0F9A6CD428242B57008EDF32 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				0F9A6CD628242B89008EDF32 /* MockCartListPresenter.swift */,
+				0F9A6CD828242DEE008EDF32 /* MockCartListInteractor.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		0F9A6CD528242B5E008EDF32 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0F9A6CDC282437BC008EDF32 /* CartListViewControllerTests.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		A877812A28171AF600A9584E = {
 			isa = PBXGroup;
 			children = (
@@ -280,7 +330,6 @@
 				0F9A6C8E281C4350008EDF32 /* ProductList */,
 				A877813628171AF600A9584E /* AppDelegate.swift */,
 				A877813828171AF600A9584E /* SceneDelegate.swift */,
-				A877813A28171AF600A9584E /* ViewController.swift */,
 				A877813F28171AF700A9584E /* Assets.xcassets */,
 				A877814128171AF700A9584E /* LaunchScreen.storyboard */,
 				A877814428171AF700A9584E /* Info.plist */,
@@ -292,8 +341,8 @@
 		A877814C28171AF700A9584E /* CapitalOneShoppingCartDemoTests */ = {
 			isa = PBXGroup;
 			children = (
+				0F9A6CD128242B2D008EDF32 /* CartList */,
 				0F9A6CBB2822F47C008EDF32 /* ProductList */,
-				A877814D28171AF700A9584E /* CapitalOneShoppingCartDemoTests.swift */,
 			);
 			path = CapitalOneShoppingCartDemoTests;
 			sourceTree = "<group>";
@@ -461,7 +510,6 @@
 				0F9A6C9F281C43E0008EDF32 /* CartListPresenter.swift in Sources */,
 				0F9A6CA1281C43EE008EDF32 /* CartListInteractor.swift in Sources */,
 				A877816E28206F3300A9584E /* ProductsRepository.swift in Sources */,
-				A877813B28171AF600A9584E /* ViewController.swift in Sources */,
 				0F9A6C9D281C43D5008EDF32 /* CartListViewController.swift in Sources */,
 				0F9A6C92281C4374008EDF32 /* ProductListViewController.swift in Sources */,
 				A877817528206FA700A9584E /* Cart.swift in Sources */,
@@ -489,6 +537,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F9A6CCC28231376008EDF32 /* MockProductListInteractor.swift in Sources */,
+				0F9A6CD728242B89008EDF32 /* MockCartListPresenter.swift in Sources */,
+				0F9A6CDF282437CF008EDF32 /* CartListInteractorTests.swift in Sources */,
+				0F9A6CDB28242EA2008EDF32 /* CartListPresenterTests.swift in Sources */,
+				0F9A6CD928242DEE008EDF32 /* MockCartListInteractor.swift in Sources */,
+				0F9A6CDD282437BC008EDF32 /* CartListViewControllerTests.swift in Sources */,
 				0F9A6CC82823117A008EDF32 /* MockWebService.swift in Sources */,
 				8F6956A22821E81C00436F67 /* ProductsWebServiceTests.swift in Sources */,
 				0F9A6CC32822F6B8008EDF32 /* NetworkClientMock.swift in Sources */,
@@ -496,7 +549,6 @@
 				0F9A6CD028231EA0008EDF32 /* ProductListPresenterTests.swift in Sources */,
 				0F9A6CCA2823126C008EDF32 /* ProductListInteractorTests.swift in Sources */,
 				0F9A6CCE28231E83008EDF32 /* ProductListViewControllerTests.swift in Sources */,
-				A877814E28171AF700A9584E /* CapitalOneShoppingCartDemoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

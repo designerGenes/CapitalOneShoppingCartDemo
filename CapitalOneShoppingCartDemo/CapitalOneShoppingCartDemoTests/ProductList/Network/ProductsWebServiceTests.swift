@@ -91,16 +91,4 @@ class ProductsWebServiceTests: XCTestCase {
         
         XCTAssertNotEqual(expectedResult,actualResult,"It should return invalid response but its returning something else ")
     }
-    
-    func testGetListOfProducts_WhenProvideInValidUrl_ReturnError(){
-       // let product = Product(id: 10, title: "iphone 9", price: 1000, description: "new iphone 9", discountPercentage: 10, rating: 9.5, stock: 10, brand: "Apple", category: "Smart Phone", thumbnail: "ImageUrl")
-        
-      //  netWorkClientMock.dataResult = ProductsList(products: [product])
-        
-        let invalidURL = URL(string: "www.test.com")
-      //  expectationWait()
-        
-        XCTAssertNotEqual(invalidURL, EndpointProvider.productListendPoint(), "Invalid URL")
-
-    }
 }
