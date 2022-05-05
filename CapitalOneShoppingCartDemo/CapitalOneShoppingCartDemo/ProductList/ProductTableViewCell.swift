@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class ProductTableViewCell:UITableViewCell {
+class ProductTableViewCell: UITableViewCell {
     
     public static var reuseIdentifier: String {
         return String(describing: self)

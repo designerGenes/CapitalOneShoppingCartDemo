@@ -1,14 +1,13 @@
 //
-//  CapitalOneShoppingCartDemoTests.swift
+//  CartListViewControllerTests.swift
 //  CapitalOneShoppingCartDemoTests
 //
-//  Created by Jaden Nation on 4/25/22.
+//  Created by Taha Ali on 2022-05-05.
 //
 
 import XCTest
-@testable import CapitalOneShoppingCartDemo
 
-class CapitalOneShoppingCartDemoTests: XCTestCase {
+class CartListViewControllerTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

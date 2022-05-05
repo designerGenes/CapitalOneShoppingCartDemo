@@ -20,7 +20,7 @@ protocol CartListPresenterProtocol {
     func getTotal() -> Double
 }
 
-class CartListPresenter:CartListPresenterProtocol{
+class CartListPresenter: CartListPresenterProtocol {
     
     //MARK: - Variables
     var cartListPublisher: AnyPublisher<Void, Never>
