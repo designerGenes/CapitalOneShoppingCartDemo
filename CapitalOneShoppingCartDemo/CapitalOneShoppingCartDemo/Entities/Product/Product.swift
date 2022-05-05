@@ -23,4 +23,8 @@ struct Product: Codable, Equatable {
     static var emptyProduct: Product {
         Product(id: 0, title: "", price: 5, description: "", discountPercentage: 40.0, rating: 3.4, stock: 45, brand: "", category: "", thumbnail: "")
     }
+    
+    static var defaultProduct: Product {
+        Product(id: 10, title: "iphone 9", price: 1000, description: "new iphone 9", discountPercentage: 10, rating: 9.5, stock: 10, brand: "Apple", category: "Smart Phone", thumbnail: "ImageUrl")
+    }
 }

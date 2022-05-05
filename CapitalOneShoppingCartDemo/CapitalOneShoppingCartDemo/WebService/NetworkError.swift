@@ -7,6 +7,16 @@
 
 import Foundation
 
-enum NetworkError: Error {
-    case genericError
+enum NetworkError : LocalizedError, Equatable, Error {
+    
+    case responseModelParsingError
+    case invalidRequestURLStringError
+    
+    
+    var errorDescription: String? {
+        switch self {
+        case .invalidRequestURLStringError, .responseModelParsingError:
+            return ""
+        }
+    }
 }

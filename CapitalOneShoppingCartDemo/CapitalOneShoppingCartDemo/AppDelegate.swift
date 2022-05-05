@@ -14,6 +14,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+//        var products = [Product]()
+//        let product = Product(id: 1, title: "yes", price: 100, description: "ahsd", discountPercentage: 3.3, rating: 3.3, stock: 2, brand: "df", category: "df", thumbnail: "dsf")
+//        let product1 = Product(id: 1, title: "yes", price: 100, description: "ahsd", discountPercentage: 3.3, rating: 3.3, stock: 2, brand: "df", category: "df", thumbnail: "dsf")
+//        products.append(product)
+//        products.append(product1)
+//        
+//        let repo = ProductsRepository()
+//        repo.set(records: products)
+//
+//        print(repo.getAll())
+        
         return true
     }
 
