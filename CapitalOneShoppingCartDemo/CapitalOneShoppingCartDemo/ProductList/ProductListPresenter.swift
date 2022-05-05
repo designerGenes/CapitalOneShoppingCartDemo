@@ -34,8 +34,14 @@ class ProductListPresenter: ProductListPresenterProtocol {
     
     /// Initiates the call to retreive the product list service
     func initiateProductList() {
+        //Showing Progress
+        ProgressView.shared.startAnimating()
+
         productListInteractor.productList().sink(receiveCompletion: { _ in
         }, receiveValue: { [weak self] in
+            //Stop the progress
+            ProgressView.shared.stopAnimatimating()
+
             self?.updateProductList(products: $0 ?? [])
             ProductsRepository().set(records: $0 ?? [])
         })

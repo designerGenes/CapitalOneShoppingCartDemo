@@ -85,6 +85,14 @@ class CartListViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
                 switch action.style{
                     case .default:
+                    for item in self.cartListPresenter.getCartProducts(){
+                        let repo = CartsRepository()
+                        let cart = repo.getCart()
+                        cart.removeProduct(id: item.id)
+                        self.cartListPresenter.updateProductList()
+                        self.presetControlPassthroughSubject.send(item.id)
+                    }
+                    self.dismiss(animated: true, completion: nil)
                     print("default")
                     
                     case .cancel:
