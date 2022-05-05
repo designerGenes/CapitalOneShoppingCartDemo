@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import UIKit
 extension UIColor {
     convenience init(hex: UInt32, alpha: CGFloat) {
         let red = CGFloat((hex & 0xFF0000) >> 16)/256.0
