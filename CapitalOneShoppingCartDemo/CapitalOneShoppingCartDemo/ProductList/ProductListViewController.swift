@@ -44,7 +44,7 @@ class ProductListViewController: UIViewController {
         setupTableView()
         setupNavigationWithAddToCartButton()
         sinkToPublishers()
-        self.title = "Product List"
+        self.title = "Products"
         
         guard let presenter = self.productListPresenter else {
             print ("Not initialised")
@@ -54,10 +54,6 @@ class ProductListViewController: UIViewController {
             self.products = presenter.getAllProducts()
             ProductsRepository().set(records: self.products)
         }
-//        presenterProtocol.initiateProductList()
-//        self.products = presenterProtocol.getAllProducts()
-        
-
     }
     
     private func sinkToPublishers() {
@@ -76,12 +72,12 @@ class ProductListViewController: UIViewController {
     }
     
     private func setupNavigationWithAddToCartButton() {
-        let cartScreenNavigation = UIBarButtonItem(image: UIImage(systemName: "plus"),
+        let cartScreenNavigation = UIBarButtonItem(image: UIImage(systemName: "cart.fill"),
                                                   style: .plain,
                                                   target: self,
                                                   action: #selector(navigateToCartScreen))
         
-        cartScreenNavigation.title = "ADD TO CART"
+        cartScreenNavigation.tintColor = UIColor.black
         self.navigationItem.rightBarButtonItem  = cartScreenNavigation
     }
     

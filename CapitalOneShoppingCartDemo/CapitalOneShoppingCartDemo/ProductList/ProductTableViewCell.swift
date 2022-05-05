@@ -79,7 +79,7 @@ class ProductTableViewCell:UITableViewCell {
     
     public let productImage: UIImageView = {
         let productImage = UIImageView()
-        productImage.contentMode = .scaleAspectFill
+        productImage.contentMode = .scaleToFill
         productImage.clipsToBounds = true
         return productImage
     }()
