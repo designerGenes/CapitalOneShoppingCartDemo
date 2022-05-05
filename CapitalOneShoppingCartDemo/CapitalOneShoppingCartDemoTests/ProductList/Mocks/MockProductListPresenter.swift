@@ -11,7 +11,7 @@ import Combine
 
 class MockProductListPresenter: ProductListPresenterProtocol {
     
-    var productsListPublisher: AnyPublisher<Void, Never> = Empty().eraseToAnyPublisher()
+    var productsListPublisher: AnyPublisher<Void, Never> = Result.Publisher(()).eraseToAnyPublisher()
     var cancellables: AnyCancellable?
     
     var initiateProductListCalled: Bool = false
