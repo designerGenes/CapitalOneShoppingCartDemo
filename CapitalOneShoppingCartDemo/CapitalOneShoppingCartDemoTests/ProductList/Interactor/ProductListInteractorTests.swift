@@ -18,7 +18,6 @@ class ProductListInteractorTests: XCTestCase {
     override func setUpWithError() throws {
         mockWebService = MockWebService()
         interactor = MockProductListInteractor()
-        
     }
 
     override func tearDownWithError() throws {

@@ -101,9 +101,6 @@ class ProductsWebServiceTests: XCTestCase {
       //  expectationWait()
         
         XCTAssertNotEqual(invalidURL, EndpointProvider.productListendPoint(), "Invalid URL")
-        
+
     }
-    
-    
- 
 }

@@ -11,7 +11,7 @@ import Combine
 
 class ProductListViewController: UIViewController {
     
-    private var productListView =  ProductListView()
+    var productListView =  ProductListView()
     
     //Todo: remove later- Prasanth
     private var productWebService = ProductsWebService()
