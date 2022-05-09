@@ -138,7 +138,7 @@ extension ProductListViewController : UITableViewDataSource {
 
     }
     
-
+    //Add product to cart
     @objc func checkoutButtonAction(sender: UIButton!) {
         
         let product = productListPresenter.getCurrentProduct(at: sender.tag)
