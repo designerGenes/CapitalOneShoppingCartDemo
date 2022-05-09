@@ -142,8 +142,10 @@ extension CartListViewController : UITableViewDelegate, UITableViewDataSource{
             if editingStyle == .delete {
                 let product = cartListPresenter.getCurrentProduct(at: indexPath.row)
                 let repo = CartsRepository()
-                let cart = repo.getCart()
-                cart.removeProduct(id: product.id)
+
+                var productState = AppState(id: product.id , cart: repo.getCart())
+                Store.shared.dispatch(action: Action.remove, appState: &productState)
+
                 cartListPresenter.updateProductList()
                 presetControlPassthroughSubject.send(product.id)
              //   tableView.deleteRows(at: [indexPath], with: .bottom)
