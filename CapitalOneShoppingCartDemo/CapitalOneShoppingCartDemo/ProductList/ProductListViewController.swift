@@ -144,8 +144,10 @@ extension ProductListViewController : UITableViewDataSource {
         let product = productListPresenter.getCurrentProduct(at: sender.tag)
         
         let repo = CartsRepository()
-        let cart = repo.getCart()
-        cart.addProduct(id: product.id)
+
+        var productState = AppState(id: product.id, cart: repo.getCart())
+        Store.shared.dispatch(action: Action.add, appState: &productState)
+
         self.productListView.tableView.reloadData()
 
     }

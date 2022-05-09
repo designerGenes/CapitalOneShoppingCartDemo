@@ -63,6 +63,9 @@ class ProductListPresenter: ProductListPresenterProtocol {
                 return true
             }
         }
+//        if ((Store.shared.appState?.cart.productIds.contains(productId)) != nil){
+//            return true
+//        }
         return false
     }
     
