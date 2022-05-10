@@ -35,8 +35,16 @@ class ProductListViewController: UIViewController {
         self.productListPresenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
-
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("Printing counter *****>>>   \(Store.shared.appState.counter)")
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("Printing counter *****>>>   \(Store.shared.appState.counter)")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(self.productListView.tableView)
@@ -44,7 +52,7 @@ class ProductListViewController: UIViewController {
         setupTableView()
         setupNavigationWithAddToCartButton()
         sinkToPublishers()
-        self.title = "Products"
+        self.title = "Products"+String(Store.shared.appState.counter)
         
         guard let presenter = self.productListPresenter else {
             print ("Not initialised")
@@ -143,9 +151,11 @@ extension ProductListViewController : UITableViewDataSource {
         
         let product = productListPresenter.getCurrentProduct(at: sender.tag)
         
+        Store.shared.dispatch(action: .add)
         let repo = CartsRepository()
         let cart = repo.getCart()
         cart.addProduct(id: product.id)
+        
         self.productListView.tableView.reloadData()
 
     }

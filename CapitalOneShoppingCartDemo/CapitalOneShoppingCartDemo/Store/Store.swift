@@ -7,33 +7,49 @@
 
 import Foundation
 
-struct ProductState{
-    var cart: Cart
+struct AppState{
+    var counter: Int = 0
+    
 }
 
-enum ProductAction {
+enum Action {
     case add
     case remove
 }
 
-class ProductReducer {
-    func updateCartProduct(productState: ProductState, productAction: ProductAction){
-        switch productAction {
+class Reducer {
+    
+    func updateCartProduct(appState:inout AppState, action: Action){
+        switch action {
         case .add:
-            //add product
+            print("add product")
+            if appState.counter >= 0{
+                appState.counter += 1
+            }
         case .remove:
-            // remove product
+            print("remove product")
+            if appState.counter >= 0{
+                appState.counter -= 1
+            }
         }
     }
 }
 
 class Store: ObservableObject {
     
-    var reducer: ProductReducer
-    @Published var appState: ProductState
+    var reducer: Reducer = Reducer()
+    @Published var appState: AppState = AppState(counter: Cart().productIds.count)
     
-    init(appState:ProductState, reducer:ProductReducer){
-        self.reducer = reducer
-        self.appState = appState
+    static let shared = Store()
+    
+//    init(appState:AppState, reducer:Reducer){
+//        self.reducer = reducer
+//        self.appState = appState
+//    }
+    
+    func dispatch(action: Action){
+        reducer.updateCartProduct(appState: &appState, action: action)
     }
+    
 }
+

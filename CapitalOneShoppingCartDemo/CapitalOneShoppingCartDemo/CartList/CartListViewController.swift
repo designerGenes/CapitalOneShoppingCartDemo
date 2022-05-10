@@ -36,6 +36,11 @@ class CartListViewController: UIViewController {
         self.cartListPresenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("Printing counter *****>>>   \(Store.shared.appState.counter)")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -146,7 +151,7 @@ extension CartListViewController : UITableViewDelegate, UITableViewDataSource{
                 cart.removeProduct(id: product.id)
                 cartListPresenter.updateProductList()
                 presetControlPassthroughSubject.send(product.id)
-             //   tableView.deleteRows(at: [indexPath], with: .bottom)
+                Store.shared.dispatch(action: .remove)
             }
         }
 
