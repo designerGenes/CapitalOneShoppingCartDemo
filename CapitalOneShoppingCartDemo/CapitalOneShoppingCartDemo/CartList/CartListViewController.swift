@@ -39,7 +39,11 @@ class CartListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("Printing counter *****>>>   \(Store.shared.appState.counter)")
+        self.cartListView.cartTitleLabel.text = String("CART \(Store.shared.appState.counter)")
+        Store.shared.storePassthroughSubject.sink {[weak self] count in
+            print("Printing  storePassthroughSubject counter *****>>>   \(count)")
+            self?.cartListView.cartTitleLabel.text = String("CART \(count)")
+        }.store(in: &cancellables)
     }
 
     override func viewDidLoad() {
@@ -97,6 +101,7 @@ class CartListViewController: UIViewController {
                         self.cartListPresenter.updateProductList()
                         self.presetControlPassthroughSubject.send(item.id)
                     }
+                    Store.shared.dispatch(action: .clear)
                     self.dismiss(animated: true, completion: nil)
                     print("default")
                     

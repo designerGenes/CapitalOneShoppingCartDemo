@@ -35,24 +35,24 @@ class ProductListViewController: UIViewController {
         self.productListPresenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print("Printing counter *****>>>   \(Store.shared.appState.counter)")
-    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("Printing counter *****>>>   \(Store.shared.appState.counter)")
+        //print("Printing counter *****>>>   \(Store.shared.appState.counter)")
+        
+        Store.shared.storePassthroughSubject.sink {[weak self] count in
+            print("Printing  storePassthroughSubject counter *****>>>   \(count)")
+            self?.setupNavigationWithAddToCartButton(productCount: count)
+        }.store(in: &cancellables)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(self.productListView.tableView)
         self.view.backgroundColor = UIColor.white
         setupTableView()
-        setupNavigationWithAddToCartButton()
+        setupNavigationWithAddToCartButton(productCount: CartsRepository().getCart().productIds.count)
         sinkToPublishers()
-        self.title = "Products"+String(Store.shared.appState.counter)
+        self.title = "Products" //+String(Store.shared.appState.counter)
         
         guard let presenter = self.productListPresenter else {
             print ("Not initialised")
@@ -76,14 +76,15 @@ class ProductListViewController: UIViewController {
         self.productListView.tableView.estimatedRowHeight = 600
     }
     
-    private func setupNavigationWithAddToCartButton() {
-        let cartScreenNavigation = UIBarButtonItem(image: UIImage(systemName: "cart.fill"),
-                                                  style: .plain,
-                                                  target: self,
-                                                  action: #selector(navigateToCartScreen))
+    private func setupNavigationWithAddToCartButton(productCount:Int) {
+
+        let button = UIButton(type: .system)
+                button.setImage(UIImage(systemName: "cart.fill"), for: .normal)
+                button.setTitle(String(productCount), for: .normal)
+                button.sizeToFit()
+                button.addTarget(self, action: #selector(navigateToCartScreen), for: .touchUpInside)
+                self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
         
-        cartScreenNavigation.tintColor = UIColor.black
-        self.navigationItem.rightBarButtonItem  = cartScreenNavigation
     }
     
     @objc private func navigateToCartScreen() {

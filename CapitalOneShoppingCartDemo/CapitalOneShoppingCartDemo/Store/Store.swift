@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 struct AppState{
     var counter: Int = 0
@@ -15,6 +16,7 @@ struct AppState{
 enum Action {
     case add
     case remove
+    case clear
 }
 
 class Reducer {
@@ -25,12 +27,19 @@ class Reducer {
             print("add product")
             if appState.counter >= 0{
                 appState.counter += 1
+                Store.shared.storePassthroughSubject.send(appState.counter)
             }
+            
         case .remove:
             print("remove product")
             if appState.counter >= 0{
                 appState.counter -= 1
+                Store.shared.storePassthroughSubject.send(appState.counter)
             }
+        case .clear:
+            print("Clear products")
+            appState.counter = 0
+            Store.shared.storePassthroughSubject.send(appState.counter)
         }
     }
 }
@@ -38,14 +47,12 @@ class Reducer {
 class Store: ObservableObject {
     
     var reducer: Reducer = Reducer()
-    @Published var appState: AppState = AppState(counter: Cart().productIds.count)
+    @Published var appState: AppState = AppState(counter: CartsRepository().getCart().productIds.count)
     
     static let shared = Store()
     
-//    init(appState:AppState, reducer:Reducer){
-//        self.reducer = reducer
-//        self.appState = appState
-//    }
+    let storePassthroughSubject = PassthroughSubject<Int,Never>()
+
     
     func dispatch(action: Action){
         reducer.updateCartProduct(appState: &appState, action: action)
